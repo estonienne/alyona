@@ -191,6 +191,11 @@
 #infoContent a:hover::after {
   width: 100%;
 }
+.cv {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
 
 </style>
 </head>
@@ -206,7 +211,7 @@ ALYONAMOVKOMÄGI
 ALYONAMOVKOMÄGI
 ALYONAMOVKOMÄGI
 ALYONAMOVKOMÄGI
-<span class="cv" style="cursor:pointer;text-decoration:underline">cv</span>
+<a href="cv.pdf" class="cv" style="text-decoration:underline">cv</a>
 ALYONAMOVKOMÄGI
 ALYONAMOVKOMÄGI
     </div>
@@ -334,7 +339,6 @@ a.textContent = titleText;
 }
 
 
-document.querySelector('.cv').addEventListener('click', () => toggleInfo(true, 'cv'));
   
     // ASCII Tree Animation
     window.addEventListener("DOMContentLoaded", () => {
