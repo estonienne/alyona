@@ -196,6 +196,24 @@
   color: inherit;
   cursor: pointer;
 }
+.text-links {
+  list-style: none;
+  padding: 0;
+}
+
+.text-links li {
+  margin-bottom: 1rem;
+}
+
+.text-links a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.text-links a:hover {
+  opacity: 0.6;
+}
 
 </style>
 </head>
@@ -238,7 +256,7 @@ OUTPUT OUTPUT OUTPUT
 <span onclick="toggleInfo(true, 'exhibitions')" style="cursor:pointer;text-decoration:underline">exhibitions</span>
 OUTPUT OUTPUT OUTPUT
 OUTPUT OUTPUT OUTPUT
-<span style="cursor:pointer;text-decoration:underline" onclick="toggleInfo(true, 'text')">text</span>
+<span onclick="toggleInfo(true, 'texts')" style="cursor:pointer;text-decoration:underline">texts</span>
 OUTPUT OUTPUT OUTPUT
       </div>
     </div>
@@ -282,10 +300,7 @@ MÄGI MÄGI
   <div id="infoContent"></div>
 </div>
 <script>
-    const contentMap = {
-      cv: '<p>Curriculum Vitae content goes here...</p>',
-      text: '<p>Texts and essays go here...</p>'
-    };
+   
   
     
 function toggleInfo(show, type = '') {
@@ -308,6 +323,10 @@ function toggleInfo(show, type = '') {
     "sutures.duo",
     "sutures"
   ];
+  const  texts = [
+  { title: "From Disappearance to Reimagination: Crafting Heritage in a Vanishing World", file: "texts/SkyMaiden.pdf" },
+
+  ]
 
   if (show && type) {
     title.textContent = type.toUpperCase();
@@ -316,7 +335,7 @@ function toggleInfo(show, type = '') {
     list.style.paddingLeft = '0';
     list.style.marginLeft = '0';
 
-    const items = type === 'works' ? works : type === 'exhibitions' ? exhibitions : [];
+    const items = type === 'works' ? works : type === 'exhibitions' ? exhibitions : type === 'texts' ? texts : [];
 
     items.forEach(item => {
       const titleText = typeof item === 'string' ? item : item.title;
