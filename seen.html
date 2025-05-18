@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RÜÜ – Alyona Movko-Mägi</title>
+  <style>
+    body {
+      --bg-color: #fff;
+      --text-color: #111;
+      font-family: monospace;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 2rem;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 1rem;
+    }
+    .meta {
+      font-size: 14px;
+      margin-bottom: 1rem;
+    }
+    .materials {
+      font-style: italic;
+    }
+    .location {
+      font-size: 12px;
+      text-align: right;
+      margin-bottom: 1.5rem;
+    }
+    .description {
+      margin: 2rem 0;
+      white-space: pre-wrap;
+      line-height: 1.6;
+    }
+    .gallery img {
+  display: block;
+  margin: 20px auto;
+  opacity: 0;
+  transition: opacity 1s ease;
+      width: 100%;
+      max-width: 700px;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: opacity 0.5s ease;
+    }
+    .caption {
+      font-size: 12px;
+      opacity: 0.6;
+      margin-top: 0.4rem;
+    }
+    .fullscreen-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .fullscreen-overlay img {
+      max-width: 90vw;
+      max-height: 80vh;
+    }
+    .fullscreen-caption {
+      color: white;
+      font-size: 7px;
+      margin-top: 1rem;
+      max-width: 90vw;
+      text-align: center;
+    }
+    .fullscreen-controls {
+      position: absolute;
+      bottom: 20px;
+      display: flex;
+      gap: 20px;
+    }
+    .fullscreen-btn {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-family: monospace;
+      transition: background 0.3s;
+    }
+    .fullscreen-btn:hover {
+      background: rgba(255,255,255,0.3);
+    }
+  
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+    main {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .nav-links {
+      margin-top: 4rem;
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+    }
+    main {
+      animation: fadeIn 1.2s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .controls {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      gap: 10px;
+      z-index: 1001;
+    }
+    
+    .dark-toggle, .shuffle-btn {
+      font-family: monospace;
+      background: none;
+      border: 1px solid currentColor;
+      padding: 4px 10px;
+      font-size: 13px;
+      color: inherit;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+    
+    body.dark {
+      --bg-color: #111;
+      --text-color: #eee;
+    }
+  </style>
+</head>
+<body>
+<div class="controls">
+  <button class="dark-toggle" onclick="toggleDark()">dark / light</button>
+</div>
+<canvas id="asciiCanvas"></canvas>
+  <main id="content">
+    <h1>SEEN: it’s bitter so bitter, that it becomes sweet</h1>
+    with Madara Gruntmane
+    <div class="meta">2022 <span class="materials">Four-channel video, double-side projection, surround sound
+      7’25’’</span></div>
+    <div class="location">Tallin Art Hall</div>
+    <div class="description">
+      "Seen" is an art project embodying a socially poetic message, highlighting the often overlooked factions of society that are frequently labeled as
+      'marginal'. These are individuals living beyond the societal norms, unheard and unnoticed - the homeless, those struggling with addiction, and people
+      with a criminal past. Many in society find interacting with these groups disconcerting, puzzling, or even perilous.
+      The objective of this art piece is to unambiguously illustrate that these individuals, too, harbor feelings and unique life experiences. Their social
+      standing, coupled with their experiences, offer them a unique vantage point for understanding the essence of poetry. By breaking down the barriers
+      of existing stereotypes and paying heed to these individuals' narratives through their lens, we may come to realize that their interpretation of poetry
+      can be profoundly different, potentially more genuine.
+      The project aims to promote active listening, understanding, recognizing the often-concealed humanity in these groups, and breaking down the walls
+      of societal prejudice.
+      The screens involved in the project create a polyphonic visual interplay. During a live poetry reading, the main actor is accompanied by an avatar
+      positioned behind them, acting as a guardian angel, reinforcing the message that they are not alone. As the poem concludes, the avatar aligns with
+      the actor.
+      Meanwhile, on other screens, avatars of additional actors attentively "listen" to the poem. Subsequently, the live version of the actor joins an avatar on
+      a different screen, while avatars on other screens continue to 'listen' to the poem, maintaining the interplay's polyphony.
+    </div>
+        <div class="gallery" id="imageGallery">
+      <div><img src="images/seen/seen1.jpg" onclick="showFullscreen(0)"><div class="caption">Photo: Paul Kuimet</div></div>
+      <div><img src="images/seen/seen2.jpg" onclick="showFullscreen(0)"><div class="caption">Photo: Paul Kuimet</div></div>
+      <div><img src="images/seen/seen3.jpg" onclick="showFullscreen(0)"><div class="caption">Photo: Paul Kuimet</div></div>
+      <div><img src="images/seen/seen4.jpg" onclick="showFullscreen(0)"><div class="caption">Photo: Paul Kuimet</div></div>
+    </div>
+    <p><a href="index.html">← Back to index</a></p>
+  
+    <div class="nav-links">
+      <a href="project_biopoetics.html">← Previous</a>
+      <a href="project_skymaiden.html">Next →</a>
+    </div>
+    
+</main>
+
+  <script>
+    const fullscreenImages = [
+      { src: "images/ryy/ryy1.jpg", caption: "Photo: Joosep Kivimäe" },
+      { src: "images/ryy/ryy2.jpg", caption: "Photo: Joosep Kivimäe" },
+      { src: "images/ryy/ryy3.jpg", caption: "Photo: Joosep Kivimäe" }
+    ];
+    let currentIndex = 0;
+    let imageOrder = [0, 1, 2];
+    
+    // Shuffle the gallery images
+    function shuffleImages() {
+      // Get all images in the gallery
+      const gallery = document.getElementById('imageGallery');
+      const items = Array.from(gallery.children);
+      
+      // Shuffle the order
+      for (let i = items.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        gallery.appendChild(items[j]);
+      }
+    }
+
+    function showFullscreen(index) {
+      currentIndex = index;
+      const image = fullscreenImages[currentIndex];
+      const overlay = document.createElement("div");
+      overlay.className = "fullscreen-overlay";
+      overlay.tabIndex = 0;
+      
+      // Create the content with controls
+      overlay.innerHTML = `
+        <img src="${image.src}" alt="">
+        <div class="fullscreen-caption">${image.caption}</div>
+        
+      `;
+      
+      // Set up button events
+      
+      
+      
+      
+      // Close on overlay click
+      overlay.addEventListener("click", () => overlay.remove());
+      
+      // Add keyboard navigation
+      overlay.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") {
+          navigateFullscreen(1);
+        } else if (e.key === "ArrowLeft") {
+          navigateFullscreen(-1);
+        } else if (e.key === "Escape") {
+          overlay.remove();
+        }
+      });
+      
+      document.body.appendChild(overlay);
+      overlay.focus();
+    }
+    
+    function navigateFullscreen(direction) {
+      currentIndex = (currentIndex + direction + fullscreenImages.length) % fullscreenImages.length;
+      const overlay = document.querySelector('.fullscreen-overlay');
+      const img = overlay.querySelector("img");
+      const cap = overlay.querySelector(".fullscreen-caption");
+      
+      img.src = fullscreenImages[currentIndex].src;
+      cap.innerHTML = fullscreenImages[currentIndex].caption;
+    }
+  
+    function toggleDark() {
+      document.body.classList.toggle('dark');
+    }
+  </script>
+
+<script>
+const canvas = document.getElementById("asciiCanvas");
+const ctx = canvas.getContext("2d");
+let width, height, mouseX = 0.5;
+const roots = [], letters = "abcdefghijklmnopqrstuvwxyz".split("");
+const maxRoots = 150;
+
+function setupCanvas() {
+  width = window.innerWidth;
+  height = window.innerHeight;
+  canvas.width = width;
+  canvas.height = height;
+  roots.length = 0;
+  for (let i = 0; i < 50; i++) roots.push(createBranch());
+}
+
+function createBranch(x = Math.random() * width, y = height + Math.random() * 100) {
+  return {
+    x, y,
+    speed: 0.5 + Math.random(),
+    angle: Math.PI * 1.5 + (Math.random() - 0.5),
+    lifetime: 0,
+    opacity: 1,
+    faded: false,
+    fadeCounter: 200,
+    path: []
+  };
+}
+
+function drawCanvas() {
+  // Draw a semi-transparent rect to create trailing effect
+  if (document.body.classList.contains('dark')) {
+    ctx.fillStyle = "rgba(17,17,17,0.06)";
+  } else {
+    ctx.fillStyle = "rgba(255,255,255,0.06)";
+  }
+  ctx.fillRect(0, 0, width, height);
+  ctx.font = "12px monospace";
+
+  for (let b of roots) {
+    const wind = (mouseX - 0.5) * 0.4;
+    b.angle += wind * 0.05;
+    b.x += Math.cos(b.angle) * b.speed;
+    b.y += -Math.abs(Math.sin(b.angle)) * b.speed;
+    b.lifetime++;
+    b.path.push({ x: b.x, y: b.y });
+
+    if (b.y < height * 0.25 && !b.faded) b.faded = true;
+    if (b.faded) b.opacity -= 1 / b.fadeCounter;
+    if (b.opacity <= 0 || b.y < -20 || b.path.length > 700) Object.assign(b, createBranch());
+
+    if (Math.random() < 0.25) {
+      // Adjust color based on dark mode
+      if (document.body.classList.contains('dark')) {
+        ctx.fillStyle = `rgba(220,220,220,${Math.max(0, b.opacity)})`;
+      } else {
+        ctx.fillStyle = `rgba(120,120,120,${Math.max(0, b.opacity)})`;
+      }
+      ctx.fillText(letters[Math.floor(Math.random() * letters.length)], b.x, b.y);
+    }
+
+    if (Math.random() < 0.01 && b.lifetime < 100 && roots.length < maxRoots) {
+      const newAngle = b.angle + (Math.random() - 0.5);
+      roots.push({ ...b, angle: newAngle, path: [...b.path] });
+    }
+  }
+}
+
+setupCanvas();
+setInterval(drawCanvas, 50);
+window.addEventListener("resize", setupCanvas);
+window.addEventListener("mousemove", e => { mouseX = e.clientX / window.innerWidth });
+window.addEventListener("click", e => {
+  const rect = canvas.getBoundingClientRect();
+  roots.push(createBranch(e.clientX - rect.left, e.clientY - rect.top));
+});
+</script>
+
+
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".gallery img").forEach(img => {
+    img.addEventListener("load", () => {
+      img.style.opacity = "1";
+    });
+    if (img.complete) {
+      img.style.opacity = "1";
+    }
+  });
+});
+</script>
+
+</body>
+</html>

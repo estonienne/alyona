@@ -1,0 +1,53 @@
+[
+  {
+    "id": "memory-shells",
+    "title": "Memory Shells",
+    "year": "2023",
+    "materials": "Glass, soil, photopaper",
+    "description": "An installation exploring preservation and decay, using cast glass from house logs and analog photograms.",
+    "images": [
+      "memory1.jpg",
+      "memory2.jpg"
+    ]
+  },
+  {
+    "id": "unearthed",
+    "title": "Unearthed",
+    "year": "2023",
+    "materials": "Rust-printed cotton, found rifle parts, leather, video",
+    "description": "A piece grounded in the threshold of a collapsed barn\u2014site of found weapons now rust-printed onto fabric.",
+    "images": [
+      "unearthed1.jpg",
+      "unearthed2.jpg"
+    ]
+  },
+  {
+    "id": "sky-maiden",
+    "title": "Sky Maiden",
+    "year": "2024",
+    "materials": "Cotton, discharge print, projection",
+    "description": "Retrofuturist textile narrative blending Izhorian embroidery with post-apocalyptic vision.",
+   "images": [
+  {
+    "src": "sky1.jpg",
+    "caption": "Photo by Mari Vares"
+  },
+  {
+    "src": "sky2.jpg",
+    "caption": "Gallery installation"
+  }
+]
+
+},
+{
+    "id": "virtual-foremothers",
+    "title": "Virtual Foremothers",
+    "year": "2025",
+    "materials": "Digital avatars, traditional textiles, voice synthesis",
+    "description": "A speculative project imagining foremothers as digital entities who carry ancestry through code and thread.",
+    "images": [
+      "foremothers1.jpg",
+      "foremothers2.jpg"
+    ]
+  }
+]
