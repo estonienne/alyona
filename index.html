@@ -231,19 +231,20 @@
 
   <canvas id="asciiCanvas"></canvas>
   <div class="root-container">
-    <div class="trunk">
+<div class="trunk">
+ALYONAMOVKOMÄGI
+        <a href="https://www.instagram.com/alyona.movko.maegi/" class="cv" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">@alyona</a>
 ALYONAMOVKOMÄGI
 ALYONAMOVKOMÄGI
-ALYONAMOVKOMÄGI
-ALYONAMOVKOMÄGI
-ALYONAMOVKOMÄGI
+<span onclick="toggleInfo(true, 'about')" style="cursor:pointer;text-decoration:underline">about</span>
 ALYONAMOVKOMÄGI
 ALYONAMOVKOMÄGI
 ALYONAMOVKOMÄGI
 <a href="cv.pdf" class="cv" style="text-decoration:underline">cv</a>
 ALYONAMOVKOMÄGI
 ALYONAMOVKOMÄGI
-    </div>
+</div>
+
     <div class="branches">
       <div class="left-branch">
 INPUT INPUT INPUT
@@ -273,7 +274,6 @@ OUTPUT OUTPUT OUTPUT
     </div>
     <div class="roots">
       <div class="root-1">
-<a href="https://www.instagram.com/alyona.movko.maegi/" class="body">@alyona</a>
 ALYONA ALYONA
 ALYONA ALYONA
 ALYONA ALYONA
@@ -348,7 +348,19 @@ function toggleInfo(show, type = '') {
     list.style.paddingLeft = '0';
     list.style.marginLeft = '0';
 
-    const items = type === 'works' ? works : type === 'exhibitions' ? exhibitions : type === 'texts' ? texts : [];
+    const items = type === 'works' ? works :
+              type === 'exhibitions' ? exhibitions :
+              type === 'texts' ? texts :
+              type === 'about' ? [{
+                title: `Alyona Movko-Mägi (b. 1984, Tallinn, Estonia) is an interdisciplinary artist working at the intersection of expanded photography, material practice, and ecological memory. Her work explores how identity, landscape, and ancestral knowledge are embedded in both organic and digital forms.
+
+Drawing on analog and AI-based photography, glass, leather, textile, projection, and interaction design, she builds multisensory environments that reflect on care, disappearance, and transformation. Movko-Mägi’s recent practice examines post-human embodiment, environmental trace, and the persistence of cultural memory through site-specific, time-based works.
+
+Movko-Mägi holds two MA degrees from the Estonian Academy of Arts — in Contemporary Art and Craft Studies — and teaches in the fields of digital fashion and experimental image-making.
+
+Her recent solo exhibition SOO, shown at the Estonian Museum of Photography, reimagines the bog as a slow-thinking body, combining analogue photography, cast glass, wet-molded leather, photogrammetry, and Gaussian Splatting animation to reflect on care, resistance, and layered time. Her work has been exhibited at Tallinn Art Hall, the Estonian Museum of Applied Art and Design, and in international contexts.`
+              }] : [];
+
 
     items.forEach(item => {
       const titleText = typeof item === 'string' ? item : item.title;
@@ -356,8 +368,18 @@ function toggleInfo(show, type = '') {
       const li = document.createElement('li');
       const a = document.createElement('a');
       a.href = href;
-a.textContent = titleText;
-      a.innerHTML = titleText.replace(/\n/g, '<br>');
+if (type === 'about') {
+  const p = document.createElement('p');
+  p.style.whiteSpace = 'pre-wrap';
+  p.style.fontSize = '13px';
+  p.textContent = titleText;
+  li.appendChild(p);
+} else {
+  a.textContent = titleText;
+  a.innerHTML = titleText.replace(/\n/g, '<br>');
+  li.appendChild(a);
+}
+
       li.appendChild(a);
       list.appendChild(li);
     });
