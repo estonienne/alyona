@@ -186,8 +186,7 @@ In September 2021, the first spacecraft launched into outer orbit with a crew co
 </main>
 
   <script>
-    const fullscreenImages = [
-    [
+ const fullscreenImages = [
   { src: "images/charter/charter1.jpg", caption: "" },
   { src: "images/charter/charter2.jpg", caption: "" },
   { src: "images/charter/charter3.jpg", caption: "" },
@@ -199,12 +198,10 @@ In September 2021, the first spacecraft launched into outer orbit with a crew co
   { src: "images/charter/charter9.jpg", caption: "" },
   { src: "images/charter/charter10.jpg", caption: "" },
   { src: "images/charter/charter11.jpg", caption: "" }
-]
+];
+let currentIndex = 0;
+let imageOrder = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-      
-    ];
-    let currentIndex = 0;
-    let imageOrder = [0, 1, 2];
     
     // Shuffle the gallery images
     function shuffleImages() {
