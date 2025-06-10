@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sutures – Alyona Movko-Mägi</title>
+  <title>Sutures.duo – Alyona Movko-Mägi</title>
   <style>
     body {
       --bg-color: #fff;
@@ -153,24 +153,29 @@
 </div>
 <canvas id="asciiCanvas"></canvas>
   <main id="content">
-    <h1>Sutures</h1>
-    <div class="meta">2021 <span class="materials">video, sound, digital print, 3-channel video installation</span></div>
-    <div class="location">EKA Gallery</div>
+    <h1>Sutures.duo</h1>
+    <div class="meta">2022<span class="materials">two-channel video projection, stereo sound, asynchronous loops, seating area</span></div>
+    <div class="location">Uue Loomingu Maja (ULM)
+      group exhibition Ideations of the World, curator: Liisi Kõuhkna
+    </div>
     <div class="description">
-Sutures explores the layered formation of identity and mechanisms of biopolitical control in the post-Soviet space. In the EKA Gallery version, the work consisted of three printed portraits and three unsynchronized video channels displayed on monitors. Digitally rendered female figures bear red scar-like patterns on their faces, reminiscent of traditional Tarvastu embroidery—symbols of cultural memory etched onto the body.
-The first video depicts a woman shedding her "skin"—a metaphor for rejecting imposed societal norms. The second shows bodily movements beneath a transparent yet oppressive material, illustrating the tension between obedience and resistance. The third channel features a woman in digitally recreated Muhu folk costume performing capoeira movements—a reference to historical resistance and hidden struggle. The body becomes a site of political and cultural inscription, where transformation reveals both personal and collective narratives of belonging and loss in post-Soviet Estonia.
-<a href="suturesduo.html">Sutures.duo</a>
+The ULM presentation, titled Sutures.duo, offered a more intimate and performative experience. Installed in a raw industrial setting, the two-channel video projection unfolded across both a wall and a screen, with a dedicated seating area for viewers to immerse themselves in the fragmented visual dialogue.The first video depicts a woman shedding her "skin"—a metaphor for rejecting imposed societal norms. The second shows bodily movements beneath a transparent yet oppressive material, illustrating the tension between obedience and resistance. The third channel features a woman in digitally recreated Muhu folk costume performing capoeira movements—a reference to historical resistance and hidden struggle. The body becomes a site of political and cultural inscription, where transformation reveals both personal and collective narratives of belonging and loss in post-Soviet Estonia.
+On one side, a close-up of a digitally aged female face marked by red scars—evocative of embroidery patterns—slowly emerges. On the other, a woman in folk costume strikes a capoeira-inspired pose, blending cultural heritage with the language of resistance. The asynchronous loops created a nonlinear rhythm, echoing how memory, identity, and political history refuse to align neatly. The work invites reflection on the complex negotiations of identity in the wake of Soviet collapse and the pressures of postcolonial nation-building.
+<a href="sutures.html">Sutures</a>
 
 
 </div>
- <div class="gallery" id="imageGallery">
-  <div><img src="images/sutures/sutures1.jpg" onclick="showFullscreen(0)"><div class="caption"></div></div>
-  <div><img src="images/sutures/sutures2.jpg" onclick="showFullscreen(1)"><div class="caption"></div></div>
-  <div><img src="images/sutures/sutures3.jpg" onclick="showFullscreen(2)"><div class="caption"></div></div>
-  <div><img src="images/sutures/sutures4.jpg" onclick="showFullscreen(3)"><div class="caption"></div></div>
-  <div><img src="images/sutures/sutures5.jpg" onclick="showFullscreen(4)"><div class="caption"></div></div>
-  <div><img src="images/sutures/sutures6.jpg" onclick="showFullscreen(5)"><div class="caption"></div></div>
+<div class="gallery" id="imageGallery">
+  <div><img src="images/sutures_duo/suturesduo1.jpg" onclick="showFullscreen(0)"><div class="caption"></div></div>
+  <div><img src="images/sutures_duo/suturesduo2.jpg" onclick="showFullscreen(1)"><div class="caption"></div></div>
+  <div><img src="images/sutures_duo/suturesduo3.jpg" onclick="showFullscreen(2)"><div class="caption"></div></div>
+  <div><img src="images/sutures_duo/suturesduo4.jpg" onclick="showFullscreen(3)"><div class="caption"></div></div>
+  <div><img src="images/sutures_duo/suturesduo5.jpg" onclick="showFullscreen(4)"><div class="caption"></div></div>
+  <div><img src="images/sutures_duo/suturesduo6.jpg" onclick="showFullscreen(5)"><div class="caption"></div></div>
+  <div><img src="images/sutures_duo/suturesduo7.jpg" onclick="showFullscreen(6)"><div class="caption"></div></div>
+  <div><img src="images/sutures_duo/suturesduo8.jpg" onclick="showFullscreen(7)"><div class="caption">Photo: Noora Lehtovuori</div></div>
 </div>
+
 
     <p><a href="index.html">← Back to index</a></p>
   
@@ -180,15 +185,18 @@ The first video depicts a woman shedding her "skin"—a metaphor for rejecting i
 
   <script>
 const fullscreenImages = [
-  { src: "images/sutures/sutures1.jpg", caption: "" },
-  { src: "images/sutures/sutures2.jpg", caption: "" },
-  { src: "images/sutures/sutures3.jpg", caption: "" },
-  { src: "images/sutures/sutures4.jpg", caption: "" },
-  { src: "images/sutures/sutures5.jpg", caption: "" },
-  { src: "images/sutures/sutures6.jpg", caption: "" }
+  { src: "images/sutures_duo/suturesduo1.jpg", caption: "Photo: Noora Lehtovuori" },
+  { src: "images/sutures_duo/suturesduo2.jpg", caption: "Photo: Noora Lehtovuori" },
+  { src: "images/sutures_duo/suturesduo3.jpg", caption: "Photo: Noora Lehtovuori" },
+  { src: "images/sutures_duo/suturesduo4.jpg", caption: "Photo: Noora Lehtovuori" },
+  { src: "images/sutures_duo/suturesduo5.jpg", caption: "Photo: Noora Lehtovuori" },
+  { src: "images/sutures_duo/suturesduo6.jpg", caption: "Photo: Noora Lehtovuori" },
+  { src: "images/sutures_duo/suturesduo7.jpg", caption: "Photo: Noora Lehtovuori" },
+  { src: "images/sutures_duo/suturesduo8.jpg", caption: "Photo: Noora Lehtovuori" }
 ];
 let currentIndex = 0;
-let imageOrder = [0, 1, 2, 3, 4, 5];
+let imageOrder = [0, 1, 2, 3, 4, 5, 6, 7];
+
 
 
     
