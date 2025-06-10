@@ -224,6 +224,33 @@
 .text-links a:hover {
   opacity: 0.6;
 }
+.interactive-link {
+  display: inline-block;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.interactive-link:hover {
+  transform: scale(1.3);
+  margin: 0 4px; /* nihutab natuke teisi sõnu */
+}
+.interactive-link {
+  display: inline-block;
+  transition: transform 0.1s ease-out;
+  position: relative;
+  z-index: 1;
+}
+.interactive-link {
+  display: inline-block;
+  transition: transform 0.2s ease, margin 0.2s ease;
+  position: relative;
+  z-index: 1;
+}
+.cv,
+.cv:visited {
+  color: inherit;
+}
 
 </style>
 </head>
@@ -233,14 +260,14 @@
   <div class="root-container">
 <div class="trunk">
 ALYONAMOVKOMÄGI
-        <a href="https://www.instagram.com/alyona.movko.maegi/" class="cv" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">@alyona</a>
+        <a href="https://www.instagram.com/alyona.movko.maegi/" class="interactive-link" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">@alyona</a>
 ALYONAMOVKOMÄGI
 ALYONAMOVKOMÄGI
-<span onclick="toggleInfo(true, 'about')" style="cursor:pointer;text-decoration:underline">about</span>
+<span class="interactive-link" onclick="toggleInfo(true, 'about')" style="text-decoration:underline" >about</span>
 ALYONAMOVKOMÄGI
 ALYONAMOVKOMÄGI
 ALYONAMOVKOMÄGI
-<a href="cv.pdf" class="cv" style="text-decoration:underline">cv</a>
+<a href="cv.pdf" class="interactive-link">cv</a>
 ALYONAMOVKOMÄGI
 ALYONAMOVKOMÄGI
 </div>
@@ -262,14 +289,14 @@ OUTPUT OUTPUT OUTPUT
 OUTPUT OUTPUT OUTPUT
 OUTPUT OUTPUT OUTPUT
 OUTPUT OUTPUT OUTPUT
-<div class="works"><span style="cursor:pointer;text-decoration:underline" onclick="toggleInfo(true, 'works')">works</span></div>
+<div class="interactive-link"><span style="cursor:pointer;text-decoration:underline" onclick="toggleInfo(true, 'works')">works</span></div>
 OUTPUT OUTPUT OUTPUT
 OUTPUT OUTPUT OUTPUT
-<span onclick="toggleInfo(true, 'exhibitions')" style="cursor:pointer;text-decoration:underline">exhibitions</span>
+<span class="interactive-link" onclick="toggleInfo(true, 'exhibitions')" style="cursor:pointer;text-decoration:underline">exhibitions</span>
 
 OUTPUT OUTPUT OUTPUT
 OUTPUT OUTPUT OUTPUT
-<span onclick="toggleInfo(true, 'texts')" style="cursor:pointer;text-decoration:underline">texts</span>
+<span class="interactive-link" onclick="toggleInfo(true, 'texts')" style="cursor:pointer;text-decoration:underline">texts</span>
 
 OUTPUT OUTPUT OUTPUT
       </div>
@@ -482,7 +509,38 @@ if (type === 'about') {
       });
     });
   </script>
+  <script>
   
+  const links = document.querySelectorAll('.interactive-link');
+  const maxDistance = 100; // px
+  const maxScale = 1.4;
+  const maxShift = 12; // px – kui palju võivad teised tekstiread nihkuda
+
+  document.addEventListener('mousemove', (e) => {
+    links.forEach(link => {
+      const rect = link.getBoundingClientRect();
+      const linkX = rect.left + rect.width / 2;
+      const linkY = rect.top + rect.height / 2;
+
+      const dx = e.clientX - linkX;
+      const dy = e.clientY - linkY;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < maxDistance) {
+        const scale = 1 + (1 - distance / maxDistance) * (maxScale - 1);
+        const shiftAmount = (1 - distance / maxDistance) * maxShift;
+
+        link.style.transform = `scale(${scale})`;
+        link.style.margin = `${shiftAmount}px ${shiftAmount * 0.7}px`;
+      } else {
+        link.style.transform = 'scale(1)';
+        link.style.margin = '0';
+      }
+    });
+  });
+</script>
+
+
   
 </body>
 </html>
