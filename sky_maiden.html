@@ -92,7 +92,21 @@
     .fullscreen-btn:hover {
       background: rgba(255,255,255,0.3);
     }
-  
+  .gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.gallery-grid .square {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  cursor: pointer;
+  transition: opacity 0.5s ease;
+  opacity: 0;
+}
+
     canvas {
       position: fixed;
       top: 0;
@@ -164,7 +178,7 @@
   <main id="content">
     <h1>Sky Maiden</h1>
     <div class="meta">2024 <span class="materials">cotton, glass</span></div>
-    <div class="location">Krulli studio of Craft Studies</div>
+    <div class="location">Ese või asi/Objects or Things exhibition, Krulli Kvartal</div>
     <div class="description">
 The two-headed woman motif in this piece reinterprets a traditional Izhorian embroidery element, symbolising duality and balance. It draws from deep cultural roots to illustrate the intricate relationship between nature and human existence, embedding layers of memory and stories from indigenous populations that no longer exist.
 
@@ -182,22 +196,38 @@ The two-headed woman motif in this piece reinterprets a traditional Izhorian emb
       <div><img src="images/sky-maiden/sky7.jpg" onclick="showFullscreen(2)"><div class="caption">Photo: Kulla Laas</div></div>
     </div>
 
-    <h2 class="subheading">Inspiration</h2>
-<div class="gallery" id="inspirationGallery">
-  <div><img src="images/sky-maiden/inspo1.jpg" onclick="showFullscreen(7)"><div class="caption">Ingerian textiles.
-Photograph by Eduard Selleke, 1928.
-Estonian National Museum, ERM Fk 764:11.</div></div>
-  <div><img src="images/sky-maiden/inspo2.jpg" onclick="showFullscreen(8)"><div class="caption">Young women on a balcony, Ingria.
-Archival photograph. Estonian National Museum, ERM Fk 958:2.</div></div>
+<h2 class="subheading">Inspiration</h2>
+<div class="gallery gallery-grid" id="inspirationGallery">
+  <div>
+    <img class="square" src="images/sky-maiden/inspo1.jpg" onclick="showFullscreen(7)">
+    <div class="caption">Ingerian textiles. Photograph by Eduard Selleke, 1928. Estonian National Museum, ERM Fk 764:11.</div>
+  </div>
+  <div>
+    <img class="square" src="images/sky-maiden/inspo2.jpg" onclick="showFullscreen(8)">
+    <div class="caption">Young women on a balcony, Ingria. Archival photograph. Estonian National Museum, ERM Fk 958:2.</div>
+  </div>
 </div>
 
 <h2 class="subheading">Process</h2>
-<div class="gallery" id="processGallery">
-  <div><img src="images/sky-maiden/process1.PNG" onclick="showFullscreen(9)"><div class="caption">Silk print design</div></div>
-  <div><img src="images/sky-maiden/process2.jpeg" onclick="showFullscreen(11)"><div class="caption">Silk print on fabric</div></div>
-  <div><img src="images/sky-maiden/process3.jpeg" onclick="showFullscreen(12)"><div class="caption">Sewing</div></div>
- <div><img src="images/sky-maiden/process4.jpeg" onclick="showFullscreen(13)"><div class="caption">Silk print on glass in kiln</div></div>
+<div class="gallery gallery-grid" id="processGallery">
+  <div>
+    <img class="square" src="images/sky-maiden/process1.PNG" onclick="showFullscreen(9)">
+    <div class="caption">Silk print design</div>
+  </div>
+  <div>
+    <img class="square" src="images/sky-maiden/process2.jpeg" onclick="showFullscreen(10)">
+    <div class="caption">Silk print on fabric</div>
+  </div>
+  <div>
+    <img class="square" src="images/sky-maiden/process3.jpeg" onclick="showFullscreen(11)">
+    <div class="caption">Sewing</div>
+  </div>
+  <div>
+    <img class="square" src="images/sky-maiden/process4.jpeg" onclick="showFullscreen(12)">
+    <div class="caption">Silk print on glass in kiln</div>
+  </div>
 </div>
+
 
     <p><a href="index.html">← Back to index</a></p>
   
