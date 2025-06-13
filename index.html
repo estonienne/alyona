@@ -251,16 +251,53 @@
 .cv:visited {
   color: inherit;
 }
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-family: monospace;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+}
+
+.top-bar a {
+  text-decoration: none;
+  color: inherit;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.top-bar a:hover {
+  opacity: 1;
+}
+
+.top-left {
+  flex: 1;
+  text-align: left;
+}
+.top-center {
+  flex: 1;
+  text-align: center;
+}
+.top-right {
+  flex: 1;
+  text-align: right;
+}
 
 </style>
 </head>
 <body>
+<div class="top-bar">
+  <div class="top-left"><a href="mailto:contact@alyonamovko.com">contact@alyonamovko.com</a></div>
+  
+  <div class="top-right"><a href="https://www.instagram.com/alyona.movko.maegi/" target="_blank">@alyona</a></div>
+</div>
 
   <canvas id="asciiCanvas"></canvas>
   <div class="root-container">
 <div class="trunk">
 ALYONAMOVKOMÄGI
-        <a href="https://www.instagram.com/alyona.movko.maegi/" class="interactive-link" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">@alyona</a>
 ALYONAMOVKOMÄGI
 ALYONAMOVKOMÄGI
 <span class="interactive-link" onclick="toggleInfo(true, 'about')" style="text-decoration:underline" >about</span>
@@ -293,11 +330,9 @@ OUTPUT OUTPUT OUTPUT
 OUTPUT OUTPUT OUTPUT
 OUTPUT OUTPUT OUTPUT
 <span class="interactive-link" onclick="toggleInfo(true, 'exhibitions')" style="cursor:pointer;text-decoration:underline">exhibitions</span>
-
 OUTPUT OUTPUT OUTPUT
 OUTPUT OUTPUT OUTPUT
 <span class="interactive-link" onclick="toggleInfo(true, 'texts')" style="cursor:pointer;text-decoration:underline">texts</span>
-
 OUTPUT OUTPUT OUTPUT
       </div>
     </div>
