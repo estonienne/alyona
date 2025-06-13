@@ -15,18 +15,28 @@
 <meta property="og:image" content="https://yourwebsite.com/preview.jpg">
   <title>Alyona Movko-Mägi - Artist, Researcher, Contemporary Craft</title>
   <style>
-    body {
-      font-family: monospace;
-      background-color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      padding: 20px;
-      box-sizing: border-box;
-      overflow-x: hidden;
-    }
+ body {
+  font-family: monospace;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  height: 100vh;
+  position: relative;
+}
+.page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding-top: 3rem; /* makes room for top-bar */
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+
     canvas {
       position: absolute;
       top: 0;
@@ -284,17 +294,56 @@
   flex: 1;
   text-align: right;
 }
+.top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.6rem 1.2rem;
+  box-sizing: border-box;
+  z-index: 2;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-family: monospace;
+}
+
+.top-bar a {
+  text-decoration: none;
+  color: inherit;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+}
+
+.top-bar a:hover {
+  opacity: 1;
+}
+
+.top-left, .top-center, .top-right {
+  flex: 1;
+}
+
+.top-center {
+  text-align: center;
+}
+.top-right {
+  text-align: right;
+}
 
 </style>
 </head>
 <body>
 <div class="top-bar">
   <div class="top-left"><a href="mailto:contact@alyonamovko.com">contact@alyonamovko.com</a></div>
-  
+    <div class="top-center"><a href="tel:+37256209491">+372 5620 9491</a></div>
   <div class="top-right"><a href="https://www.instagram.com/alyona.movko.maegi/" target="_blank">@alyona</a></div>
 </div>
 
   <canvas id="asciiCanvas"></canvas>
+  <div class="page-wrapper">
   <div class="root-container">
 <div class="trunk">
 ALYONAMOVKOMÄGI
