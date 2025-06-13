@@ -145,6 +145,15 @@
       --bg-color: #111;
       --text-color: #eee;
     }
+    .subheading {
+  font-size: 16px;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
   </style>
 </head>
 <body>
@@ -161,7 +170,7 @@ The two-headed woman motif in this piece reinterprets a traditional Izhorian emb
 
 <a href="texts/SkyMaiden.pdf">From Disappearance to Reimagination: Crafting Heritage in a Vanishing World</a>
 
-
+<h2 class="subheading">Exhibition Views</h2>
 </div>
         <div class="gallery" id="imageGallery">
       <div><img src="images/sky-maiden/sky1.jpg" onclick="showFullscreen(0)"><div class="caption">Photo: Joosep Kivimäe</div></div>
@@ -172,6 +181,24 @@ The two-headed woman motif in this piece reinterprets a traditional Izhorian emb
       <div><img src="images/sky-maiden/sky6.jpg" onclick="showFullscreen(2)"><div class="caption">Photo: Kulla Laas</div></div>
       <div><img src="images/sky-maiden/sky7.jpg" onclick="showFullscreen(2)"><div class="caption">Photo: Kulla Laas</div></div>
     </div>
+
+    <h2 class="subheading">Inspiration</h2>
+<div class="gallery" id="inspirationGallery">
+  <div><img src="images/sky-maiden/inspo1.jpg" onclick="showFullscreen(7)"><div class="caption">Ingerian textiles.
+Photograph by Eduard Selleke, 1928.
+Estonian National Museum, ERM Fk 764:11.</div></div>
+  <div><img src="images/sky-maiden/inspo2.jpg" onclick="showFullscreen(8)"><div class="caption">Young women on a balcony, Ingria.
+Archival photograph. Estonian National Museum, ERM Fk 958:2.</div></div>
+</div>
+
+<h2 class="subheading">Process</h2>
+<div class="gallery" id="processGallery">
+  <div><img src="images/sky-maiden/process1.PNG" onclick="showFullscreen(9)"><div class="caption">Silk print design</div></div>
+  <div><img src="images/sky-maiden/process2.jpeg" onclick="showFullscreen(11)"><div class="caption">Silk print on fabric</div></div>
+  <div><img src="images/sky-maiden/process3.jpeg" onclick="showFullscreen(12)"><div class="caption">Sewing</div></div>
+ <div><img src="images/sky-maiden/process4.jpeg" onclick="showFullscreen(13)"><div class="caption">Silk print on glass in kiln</div></div>
+</div>
+
     <p><a href="index.html">← Back to index</a></p>
   
     <div class="nav-links">
@@ -189,10 +216,16 @@ const fullscreenImages = [
   { src: "images/sky-maiden/sky4.jpg", caption: "Photo: Joosep Kivimäe" },
   { src: "images/sky-maiden/sky5.jpg", caption: "Photo: Kulla Laas" },
   { src: "images/sky-maiden/sky6.jpg", caption: "Photo: Kulla Laas" },
-  { src: "images/sky-maiden/sky7.jpg", caption: "Photo: Kulla Laas" }
+  { src: "images/sky-maiden/sky7.jpg", caption: "Photo: Kulla Laas" },
+  { src: "images/sky-maiden/inspo1.jpg", caption: "Ingerian textiles. Photograph by Eduard Selleke, 1928. Estonian National Museum, ERM Fk 764:11." },
+  { src: "images/sky-maiden/inspo2.jpg", caption: "Young women on a balcony, Ingria. Archival photograph. Estonian National Museum, ERM Fk 958:2." },
+ { src: "images/sky-maiden/process1.PNG", caption: "Silk print design" },
+  { src: "images/sky-maiden/process2.jpeg", caption: "Silk print on fabric" },
+   { src: "images/sky-maiden/process3.jpeg", caption: "Sewing" },
+   { src: "images/sky-maiden/process4.jpeg", caption: "Silk print on glass in kil" }
 ];
 let currentIndex = 0;
-let imageOrder = [0, 1, 2, 3, 4, 5, 6];
+let imageOrder = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
     
     // Shuffle the gallery images
@@ -259,6 +292,7 @@ let imageOrder = [0, 1, 2, 3, 4, 5, 6];
       document.body.classList.toggle('dark');
     }
   </script>
+
 
 <script>
 const canvas = document.getElementById("asciiCanvas");
