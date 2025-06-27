@@ -11,26 +11,42 @@
 <meta property="og:title" content="Alyona Movko-Mägi – Artist, Researcher">
 <meta property="og:description" content="Artist working between land, memory, and digital reality. Explore poetic materials and speculative futures.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://yourwebsite.com/">
+<meta property="og:url" content="https://alyonamovko.com/">
 <meta property="og:image" content="https://yourwebsite.com/preview.jpg">
 <title>Alyona Movko-Mägi - Artist, Researcher, Contemporary Craft</title>
   <style>
-    html, body {
+    body {
       margin: 0;
       padding: 0;
+      background: linear-gradient(to right, #fcfcfc, #f3f3f3);
+
+      font-family: monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 100%;
       height: 100%;
+      perspective: 2000px;
       overflow: hidden;
-      background: #fff;
-      font-family: monospace;
     }
-    canvas {
+    .helix-container {
+      position: relative;
+      width: 400px;
+      height: 100vh;
+      transform-style: preserve-3d;
+      animation: rotate 100s linear infinite;
+    }
+    .text-element {
       position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 0;
+      font-size: 12px;
+      color: #111;
+      transform-style: preserve-3d;
+      white-space: nowrap;
     }
-    .nav-links {
+    @keyframes rotate {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+    }.nav-links {
       position: fixed;
       top: 1rem;
       left: 50%;
@@ -45,22 +61,47 @@
       color: black;
       cursor: pointer;
     }
+.identity-block {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 13px;
+  z-index: 1000;
+}
     .name {
       position: fixed;
       top: 1rem;
       left: 1.5rem;
       z-index: 2;
+        text-decoration: none;
       letter-spacing: 1px;
     }
+.contact-block {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 13px;
+  z-index: 1000;
+}
+
+.contact-block a {
+  color: black;
+  text-decoration: none;
+  margin-bottom: 4px;
+}
+
+
     .footer {
       position: fixed;
       bottom: 1.5rem;
       width: 100%;
       text-align: center;
       font-style: italic;
-      font-size: 13px;
+      font-size: 10px;
       letter-spacing: 1px;
-      background: #fff;
       z-index: 2;
       padding: 1rem 0;
     }
@@ -102,10 +143,25 @@
       font-size: 16px;
       cursor: pointer;
     }
+  a:visited {
+  color: black;
+}
+.helix-container {
+  transition: transform 0.2s ease;
+}
+
   </style>
 </head>
 <body>
-  <div class="name">Alyona Movko-Mägi</div>
+<div class="identity-block">
+  <a href="/" class="name">Alyona Movko-Mägi</a>
+</div>
+
+<div class="contact-block">
+  <a href="mailto:contact@alyonamovko.com">contact@alyonamovko.com</a>
+  <a href="https://www.instagram.com/alyona.movko.maegi/" target="_blank">@alyona</a>
+</div>
+
   <div class="nav-links">
     <a onclick="toggleInfo('about')">about</a>
     <a href="cv.pdf">cv</a>
@@ -121,33 +177,34 @@
     <h2 id="infoTitle"></h2>
     <div id="infoContent"></div>
   </div>
-
+  <div class="helix-container" id="helixContainer"></div>
   <script>
-    const lines = [
-  "Material memory",
-  "Transformation and decay",
-  "Loss and presence",
-  "Care ethics",
-  "Embodied presence",
-  "Heritage and tradition",
-  "Environmental mythologies",
-  "Fragmented memory",
-  "Temporal layering",
-  "Anthropological and archaeological",
-  "Field-based research",
-  "Material experimentation",
-  "Photographic documentation and intervention",
-  "Digital reconstruction from archival images",
-  "Volumetric rendering and speculative forms",
-  "Dialogues between organic and industrial materials",
-  "Installation as spatial narrative",
-  "Collaboration with place and materials",
-  "Preservation and disappearance",
-  "Digital fossilization",
-  "Alchemy and archives",
-  "Land-based knowledge"
+    
+    const phrases = [
+      "Material memory",
+      "Transformation and decay",
+      "Loss and presence",
+      "Care ethics",
+      "Embodied presence",
+      "Heritage and tradition",
+      "Environmental mythologies",
+      "Fragmented memory",
+      "Temporal layering",
+      "Anthropological and archaeological",
+      "Field-based research",
+      "Material experimentation",
+      "Photographic documentation and intervention",
+      "Digital reconstruction from archival images",
+      "Volumetric rendering and speculative forms",
+      "Dialogues between organic and industrial materials",
+      "Installation as spatial narrative",
+      "Collaboration with place and materials",
+      "Preservation and disappearance",
+      "Digital fossilization",
+      "Alchemy and archives",
+      "Land-based knowledge"
     ];
- const works = [
+const works = [
   { title: "RÜÜ", file: "ryy.html" },
   { title: "Sky Maiden", file: "sky_maiden.html" },
   { title: "Networked Myths: Weaving Identity Through the Threads of the Digital Age", file: "tase.html" },
@@ -171,54 +228,7 @@
   const  texts = [
   { title: "From Disappearance to Reimagination: Crafting Heritage in a Vanishing World", file: "texts/SkyMaiden.pdf" },
   { title: "SEEN: it’s bitter so bitter, that it becomes sweet", file: "texts/seen.pdf" },
-
-  ]
-
-
-    const canvas = document.getElementById("spiralCanvas");
-    const ctx = canvas.getContext("2d");
-    let width, height, centerX, centerY;
-    let t = 0;
-    let rotation = 0;
-
-    function resize() {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
-      centerX = width / 2;
-      centerY = height / 2;
-    }
-
-    function drawSpiral() {
-      ctx.clearRect(0, 0, width, height);
-      ctx.fillStyle = "#111";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-
-      const a = 4;
-      const b = 10;
-      let angle = rotation;
-
-      for (let i = 0; i < lines.length; i++) {
-        angle += 0.35;
-        const r = a + b * (angle + t);
-        const x = centerX + r * Math.cos(angle);
-        const y = centerY + r * Math.sin(angle);
-        const scale = 1 + (i / lines.length);
-        ctx.save();
-        ctx.translate(x, y);
-        ctx.rotate(angle + Math.PI / 2);
-        ctx.font = `${Math.floor(12 * scale)}px monospace`;
-        ctx.fillText(lines[i], 0, 0);
-        ctx.restore();
-      }
-
-      rotation += 0.0012;
-      t += 0.007;
-      requestAnimationFrame(drawSpiral);
-    }
-
+  ];
     function toggleInfo(type) {
       const panel = document.getElementById("infoPanel");
       const title = document.getElementById("infoTitle");
@@ -266,13 +276,61 @@ Her recent solo exhibition SOO, shown at the Estonian Museum of Photography, rei
       panel.style.transform = 'translateX(0)';
     }
 
-    window.addEventListener("resize", () => {
-      resize();
-      drawSpiral();
-    });
+  
+    function createHelix() {
+  const container = document.getElementById('helixContainer');
+  const radius = 260;
+  const height = 700;
+  const turns = 3;
+  const totalPoints = phrases.length;
 
-    resize();
-    drawSpiral();
+  container.innerHTML = '';
+
+      for (let i = 0; i < totalPoints; i++) {
+        const t = i / (totalPoints - 1);
+        const angle = t * turns * 2 * Math.PI;
+        const y = t * height;
+        const x = radius * Math.cos(angle);
+        const z = radius * Math.sin(angle);
+
+        const phrase = phrases[i];
+const baseAngle = angle;
+for (let j = 0; j < phrase.length; j++) {
+  const char = phrase[j];
+  const charAngle = baseAngle + (j - phrase.length / 2) * 0.05;
+  const charX = radius * Math.cos(charAngle);
+  const charZ = radius * Math.sin(charAngle);
+  const cameraOffset = 400;
+  const charY = y + cameraOffset;
+
+  const charDiv = document.createElement('div');
+  charDiv.className = 'text-element';
+  charDiv.textContent = char;
+  charDiv.style.transform = `translate3d(${charX}px, ${charY - height / 2}px, ${charZ}px) rotateY(${charAngle}rad)`;
+  container.appendChild(charDiv);
+}
+      }
+    }
+
+    createHelix();
+
   </script>
+<script>
+document.addEventListener('mousemove', (e) => {
+  const container = document.getElementById('helixContainer');
+  const rect = container.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+
+  const mouseX = (e.clientX - centerX) / (rect.width / 2);
+  const mouseY = (e.clientY - centerY) / (rect.height / 2);
+
+  const rotateY = mouseX * 20;
+  const rotateX = -mouseY * 10;
+
+  container.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+});
+</script>
+
 </body>
 </html>
