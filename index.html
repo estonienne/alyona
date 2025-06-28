@@ -19,15 +19,15 @@
       margin: 0;
       padding: 0;
       background: linear-gradient(to right, #fcfcfc, #f3f3f3);
-
       font-family: monospace;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 100%;
-      height: 100vh;
-      perspective: 2000px;
-      overflow: hidden;
+  margin: 0;
+  padding: 0;
+  height: 100dvh;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
     }
     .helix-container {
       position: relative;
@@ -105,21 +105,22 @@
       z-index: 2;
       padding: 1rem 0;
     }
-    #infoPanel {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: 320px;
-      height: 100%;
-      background: #fff;
-      box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-      transform: translateX(100%);
-      transition: transform 0.4s ease;
-      z-index: 1001;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      padding: 1rem;
-    }
+#infoPanel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 320px;
+  height: 100dvh; /* more reliable on mobile than 100vh */
+  overflow-y: auto;
+  background: white;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  padding: 1rem;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
     #infoPanel h2 {
       font-size: 16px;
       margin-top: 0;
