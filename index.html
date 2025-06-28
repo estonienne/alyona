@@ -24,8 +24,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       perspective: 2000px;
       overflow: hidden;
     }
@@ -145,6 +145,28 @@
     }
   a:visited {
   color: black;
+}
+@media (max-width: 600px) {
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    gap: 0.5rem;
+    top: 5.5rem;
+  }
+
+  .identity-block {
+    top: 1rem;
+    left: 1rem;
+    font-size: 12px;
+  }
+
+  .contact-block {
+    top: 1rem;
+    right: 1rem;
+    font-size: 12px;
+    align-items: flex-end;
+  }
 }
 
 
