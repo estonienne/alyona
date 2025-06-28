@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script defer data-domain="alyonamovko.com" src="https://plausible.io/js/script.js"></script>
+    <script defer data-domain="alyonamovko.com" src="https://plausible.io/js/script.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Alyona Movko-Mägi is an artist-researcher working between materials, memory, and embodied presence. Her work explores heritage, digital fashion, and the poetics of transformation.">
@@ -11,445 +11,198 @@
 <meta property="og:title" content="Alyona Movko-Mägi – Artist, Researcher">
 <meta property="og:description" content="Artist working between land, memory, and digital reality. Explore poetic materials and speculative futures.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://yourwebsite.com/">
+<meta property="og:url" content="https://alyonamovko.com/">
 <meta property="og:image" content="https://yourwebsite.com/preview.jpg">
-  <title>Alyona Movko-Mägi - Artist, Researcher, Contemporary Craft</title>
+<title>Alyona Movko-Mägi - Artist, Researcher, Contemporary Craft</title>
   <style>
- body {
-  font-family: monospace;
-  background-color: #fff;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  overflow-x: hidden;
-  height: 100vh;
-  position: relative;
-}
-.page-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  padding-top: 3rem; /* makes room for top-bar */
-  box-sizing: border-box;
-  position: relative;
-  z-index: 1;
-}
-@media (max-width: 600px) {
-  .top-bar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0.8rem 1.2rem;
-    gap: 0.6 rem;
-  }
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #fcfcfc, #f3f3f3);
 
-  .top-left, .top-center, .top-right {
-    text-align: left;
-    width: 100%;
-    flex: none;
-  }
-}
-
-
-    canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 0;
-      width: 100vw;
-      height: 100vh;
-    }
-    .root-container {
-      position: relative;
-      z-index: 1;
+      font-family: monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 100%;
-      max-width: 800px;
-      text-align: center;
+      height: 100%;
+      perspective: 2000px;
+      overflow: hidden;
     }
-    .trunk {
-      margin: 0 auto;
-      width: 150px;
-      font-size: 13px;
-      line-height: 1;
-      letter-spacing: 1px;
-      white-space: pre;
-      text-align: center;
+    .helix-container {
+      position: relative;
+      width: 400px;
+      height: 100vh;
+      transform-style: preserve-3d;
+      animation: rotate 100s linear infinite;
     }
-    .branches {
+    .text-element {
+      position: absolute;
+      font-size: 12px;
+      color: #111;
+      transform-style: preserve-3d;
+      white-space: nowrap;
+    }
+    @keyframes rotate {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+    }.nav-links {
+      position: fixed;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
       display: flex;
-      justify-content: center;
-      margin-top: 20px;
+      gap: 1.5rem;
+      font-size: 14px;
     }
-    .left-branch, .right-branch {
-      width: 45%;
-      text-align: center;
-      font-size: 13px;
-      line-height: 1;
+    .nav-links a {
+      text-decoration: underline;
+      color: black;
+      cursor: pointer;
+    }
+.identity-block {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 13px;
+  z-index: 1000;
+}
+    .name {
+      position: fixed;
+      top: 1rem;
+      left: 1.5rem;
+      z-index: 2;
+        text-decoration: none;
       letter-spacing: 1px;
-      white-space: pre;
     }
-    .left-branch {
-      text-align: right;
-      padding-right: 5px;
-    }
-    .right-branch {
-      text-align: left;
-      padding-left: 5px;
-    }
-    .roots {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-    }
-    .root-1, .root-2, .root-3 {
-      text-align: center;
-      font-size: 13px;
-      line-height: 1;
-      letter-spacing: 1px;
-      white-space: pre;
-      width: 33%;
-    }
-    .root-1 {
-      text-align: right;
-      padding-right: 5px;
-    }
-    .works {
-      text-align: right;
-      padding-right: 50%;
-    }
-    .root-3 {
-      text-align: left;
-      padding-left: 5px;
-    }
+.contact-block {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 13px;
+  z-index: 1000;
+}
+
+.contact-block a {
+  color: black;
+  text-decoration: none;
+  margin-bottom: 4px;
+}
+
+
     .footer {
-      font-size: 9px;
-      font-style: italic;
+      position: fixed;
+      bottom: 1.5rem;
+      width: 100%;
       text-align: center;
-      margin-top: 40px;
+      font-style: italic;
+      font-size: 10px;
+      letter-spacing: 1px;
+      z-index: 2;
+      padding: 1rem 0;
     }
-    @media (max-width: 768px) {
-      .trunk, .left-branch, .right-branch, .root-1, .root-2, .root-3 {
-        font-size: 10px;
-        letter-spacing: 0;
-      }
+    #infoPanel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 320px;
+      height: 100%;
+      background: #fff;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+      transform: translateX(100%);
+      transition: transform 0.4s ease;
+      z-index: 1001;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 1rem;
     }
-    @media (max-width: 480px) {
-      .trunk, .left-branch, .right-branch, .root-1, .root-2, .root-3 {
-        font-size: 7px;
-      }
+    #infoPanel h2 {
+      font-size: 16px;
+      margin-top: 0;
     }
-    #infoContent ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    #infoPanel ul {
+      list-style: none;
+      padding: 0;
+    }
+    #infoPanel li {
+      margin-bottom: 1.2rem;
+    }
+    #infoPanel a {
+      text-decoration: none;
+      color: black;
+      font-size: 13px;
+    }
+    #closePanel {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  a:visited {
+  color: black;
 }
 
-#infoContent li {
-  margin-bottom: 1.2rem;
-  text-align: left;
-}
 
-#infoContent ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#infoContent li {
-  margin-bottom: 1.2rem;
-  text-align: left;
-  position: relative;
-  padding-left: 1.5em;
-  /* Make sure content wraps */
-  white-space: normal;
-  overflow-wrap: break-word;
-}
-
-#infoContent li::before {
-  content: '';
-  position: absolute;
-  left: 0.3em;
-  top: 0.5em;
-  width: 0.5em;
-  height: 0.5em;
-  background: #444;
-  border-radius: 50%;
-  opacity: 0;
-  transform: scale(0.6);
-  transition: all 0.3s ease;
-}
-
-#infoContent li:hover::before {
-  opacity: 1;
-  transform: scale(1);
-}
-
-#infoContent a {
-  color: inherit;
-  text-decoration: none;
-  font-size: 14px;
-  line-height: 1.6;
-  display: inline-block;
-  width: 90%; /* Reduce width to provide some margin */
-  max-width: 250px; /* Make sure it fits within the panel */
-  word-wrap: break-word; /* Enable word wrapping */
-  white-space: normal; /* Allow text to wrap */
-}
-
-/* Make the info panel slightly wider for better readability */
-.info-panel {
-  width: 320px !important;
-}
-#infoContent a {
-  color: inherit;
-  text-decoration: none;
-  font-size: 14px;
-  line-height: 1.6;
-  display: inline-block;
-  max-width: 100%;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-#infoContent a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 0%;
-  height: 1px;
-  background: currentColor;
-  transition: width 0.3s ease;
-}
-
-#infoContent a:hover::after {
-  width: 100%;
-}
-.cv {
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-}
-.text-links {
-  list-style: none;
-  padding: 0;
-}
-
-.text-links li {
-  margin-bottom: 1rem;
-}
-
-.text-links a {
-  color: inherit;
-  text-decoration: none;
-  transition: opacity 0.3s;
-}
-
-.text-links a:hover {
-  opacity: 0.6;
-}
-.interactive-link {
-  display: inline-block;
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 2;
-}
-
-.interactive-link:hover {
-  transform: scale(1.3);
-  margin: 0 4px; /* nihutab natuke teisi sõnu */
-}
-.interactive-link {
-  display: inline-block;
-  transition: transform 0.1s ease-out;
-  position: relative;
-  z-index: 1;
-}
-.interactive-link {
-  display: inline-block;
-  transition: transform 0.2s ease, margin 0.2s ease;
-  position: relative;
-  z-index: 1;
-}
-.cv,
-.cv:visited {
-  color: inherit;
-}
-.top-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 12px;
-  font-family: monospace;
-  margin-bottom: 1rem;
-  padding: 0 1rem;
-}
-
-.top-bar a {
-  text-decoration: none;
-  color: inherit;
-  opacity: 0.7;
-  transition: opacity 0.3s;
-}
-
-.top-bar a:hover {
-  opacity: 1;
-}
-
-.top-left {
-  flex: 1;
-  text-align: left;
-}
-.top-center {
-  flex: 1;
-  text-align: center;
-}
-.top-right {
-  flex: 1;
-  text-align: right;
-}
-.top-bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 0.6rem 1.2rem;
-  box-sizing: border-box;
-  z-index: 2;
-  background: transparent;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 12px;
-  font-family: monospace;
-}
-
-.top-bar a {
-  text-decoration: none;
-  color: inherit;
-  opacity: 0.8;
-  transition: opacity 0.3s;
-  white-space: nowrap;
-}
-
-.top-bar a:hover {
-  opacity: 1;
-}
-
-.top-left, .top-center, .top-right {
-  flex: 1;
-}
-
-.top-center {
-  text-align: center;
-}
-.top-right {
-  text-align: right;
-}
-
-</style>
+  </style>
 </head>
 <body>
-  <div class="info-panel" id="infoPanel" style="position: fixed; top: 0; right: 0; width: 300px; height: 100%; background: white; padding: 20px; box-shadow: -2px 0 5px rgba(0,0,0,0.1); transform: translateX(100%); transition: transform 0.4s ease; z-index: 1001; overflow-y: auto; -webkit-overflow-scrolling: touch;">
-  <button onclick="toggleInfo(false)" style="position:absolute;top:10px;right:10px;font-size:16px;cursor:pointer">✕</button>
-  <h2 id="infoTitle"></h2>
-  <div id="infoContent"></div>
-</div>
-<div class="top-bar">
-  <div class="top-left"><a href="mailto:contact@alyonamovko.com">contact@alyonamovko.com</a></div>
-    <div class="top-center"><a href="tel:+37256209491">+372 5620 9491</a></div>
-  <div class="top-right"><a href="https://www.instagram.com/alyona.movko.maegi/" target="_blank">@alyona</a></div>
+<div class="identity-block">
+  <a href="/" class="name">Alyona Movko-Mägi</a>
 </div>
 
-  <canvas id="asciiCanvas"></canvas>
-  <div class="page-wrapper">
-  <div class="root-container">
-<div class="trunk">
-ALYONAMOVKOMÄGI
-ALYONAMOVKOMÄGI
-ALYONAMOVKOMÄGI
-<span class="interactive-link" onclick="toggleInfo(true, 'about')" style="text-decoration:underline" >about</span>
-ALYONAMOVKOMÄGI
-ALYONAMOVKOMÄGI
-ALYONAMOVKOMÄGI
-<a href="cv.pdf" class="interactive-link">cv</a>
-ALYONAMOVKOMÄGI
-ALYONAMOVKOMÄGI
+<div class="contact-block">
+  <a href="mailto:contact@alyonamovko.com">contact@alyonamovko.com</a>
+  <a href="https://www.instagram.com/alyona.movko.maegi/" target="_blank">@alyona</a>
 </div>
 
-    <div class="branches">
-      <div class="left-branch">
-INPUT INPUT INPUT
-INPUT INPUT INPUT
-INPUT INPUT INPUT
-INPUT INPUT INPUT
-INPUT INPUT INPUT
-INPUT INPUT INPUT
-INPUT INPUT INPUT
-INPUT INPUT INPUT
-INPUT INPUT INPUT
-      </div>
-      <div class="right-branch">
-OUTPUT OUTPUT OUTPUT
-OUTPUT OUTPUT OUTPUT
-OUTPUT OUTPUT OUTPUT
-OUTPUT OUTPUT OUTPUT
-<div class="interactive-link"><span style="cursor:pointer;text-decoration:underline" onclick="toggleInfo(true, 'works')">works</span></div>
-OUTPUT OUTPUT OUTPUT
-OUTPUT OUTPUT OUTPUT
-<span class="interactive-link" onclick="toggleInfo(true, 'exhibitions')" style="cursor:pointer;text-decoration:underline">exhibitions</span>
-OUTPUT OUTPUT OUTPUT
-OUTPUT OUTPUT OUTPUT
-<span class="interactive-link" onclick="toggleInfo(true, 'texts')" style="cursor:pointer;text-decoration:underline">texts</span>
-OUTPUT OUTPUT OUTPUT
-      </div>
-    </div>
-    <div class="roots">
-      <div class="root-1">
-ALYONA ALYONA
-ALYONA ALYONA
-ALYONA ALYONA
-ALYONA ALYONA
-ALYONA ALYONA
-ALYONA ALYONA
-ALYONA ALYONA
-ALYONA ALYONA
-      </div>
-      <div class="root-2">
-MOVKO MOVKO
-MOVKO MOVKO
-MOVKO MOVKO
-MOVKO MOVKO
-MOVKO MOVKO
-MOVKO MOVKO
-MOVKO MOVKO
-MOVKO MOVKO
-      </div>
-      <div class="root-3">
-MÄGI MÄGI
-MÄGI MÄGI
-MÄGI MÄGI
-MÄGI MÄGI
-MÄGI MÄGI
-MÄGI MÄGI
-MÄGI MÄGI
-MÄGI MÄGI
-      </div>
-    </div>
-    <div class="footer">How do we root ourselves in uncertain ground?</div>
+  <div class="nav-links">
+    <a onclick="toggleInfo('about')">about</a>
+    <a href="cv.pdf">cv</a>
+    <a onclick="toggleInfo('works')">works</a>
+    <a onclick="toggleInfo('exhibitions')">exhibitions</a>
+    <a onclick="toggleInfo('texts')">texts</a>
   </div>
+  <canvas id="spiralCanvas"></canvas>
+  <div class="footer">How do we root ourselves in uncertain ground?</div>
 
-
-<script>
-   
-  
+  <div id="infoPanel">
+    <div id="closePanel" onclick="toggleInfo(false)">✕</div>
+    <h2 id="infoTitle"></h2>
+    <div id="infoContent"></div>
+  </div>
+  <div class="helix-container" id="helixContainer"></div>
+  <script>
     
-function toggleInfo(show, type = '') {
-  const panel = document.getElementById('infoPanel');
-  const title = document.getElementById('infoTitle');
-  const content = document.getElementById('infoContent');
-
-  const works = [
+    const phrases = [
+      "Material memory",
+      "Transformation and decay",
+      "Loss and presence",
+      "Care ethics",
+      "Embodied presence",
+      "Heritage and tradition",
+      "Environmental mythologies",
+      "Fragmented memory",
+      "Temporal layering",
+      "Anthropological and archaeological",
+      "Field-based research",
+      "Material experimentation",
+      "Photographic documentation and intervention",
+      "Digital reconstruction from archival images",
+      "Volumetric rendering and speculative forms",
+      "Dialogues between organic and industrial materials",
+      "Installation as spatial narrative",
+      "Collaboration with place and materials",
+      "Preservation and disappearance",
+      "Digital fossilization",
+      "Alchemy and archives",
+      "Land-based knowledge"
+    ];
+const works = [
   { title: "RÜÜ", file: "ryy.html" },
   { title: "Sky Maiden", file: "sky_maiden.html" },
   { title: "Networked Myths: Weaving Identity Through the Threads of the Digital Age", file: "tase.html" },
@@ -473,177 +226,109 @@ function toggleInfo(show, type = '') {
   const  texts = [
   { title: "From Disappearance to Reimagination: Crafting Heritage in a Vanishing World", file: "texts/SkyMaiden.pdf" },
   { title: "SEEN: it’s bitter so bitter, that it becomes sweet", file: "texts/seen.pdf" },
+  ];
+    function toggleInfo(type) {
+      const panel = document.getElementById("infoPanel");
+      const title = document.getElementById("infoTitle");
+      const content = document.getElementById("infoContent");
 
-  ]
+      if (!type) {
+        panel.style.transform = 'translateX(100%)';
+        return;
+      }
 
-  if (show && type) {
-    title.textContent = type.toUpperCase();
-    const list = document.createElement('ul');
-    list.style.listStyleType = 'none';
-    list.style.paddingLeft = '0';
-    list.style.marginLeft = '0';
+      title.textContent = type.toUpperCase();
+      content.innerHTML = '';
 
-    const items = type === 'works' ? works :
-              type === 'exhibitions' ? exhibitions :
-              type === 'texts' ? texts :
-              type === 'about' ? [{
-                title: `Alyona Movko-Mägi (b. 1984, Tallinn, Estonia) is an interdisciplinary artist working at the intersection of expanded photography, material practice, and ecological memory. Her work explores how identity, landscape, and ancestral knowledge are embedded in both organic and digital forms.
+      const list = document.createElement('ul');
+      let items = [];
+
+      if (type === 'works') items = works;
+      else if (type === 'exhibitions') items = exhibitions;
+      else if (type === 'texts') items = texts;
+      else if (type === 'about') {
+        content.innerHTML = `<p style="font-size: 13px; white-space: pre-wrap">
+Alyona Movko-Mägi (b. 1984, Tallinn, Estonia) is an interdisciplinary artist working at the intersection of expanded photography, material practice, and ecological memory. Her work explores how identity, landscape, and ancestral knowledge are embedded in both organic and digital forms.
 
 Drawing on analog and AI-based photography, glass, leather, textile, projection, and interaction design, she builds multisensory environments that reflect on care, disappearance, and transformation. Movko-Mägi’s recent practice examines post-human embodiment, environmental trace, and the persistence of cultural memory through site-specific, time-based works.
 
 Movko-Mägi holds two MA degrees from the Estonian Academy of Arts — in Contemporary Art and Craft Studies — and teaches in the fields of digital fashion and experimental image-making.
 
-Her recent solo exhibition SOO, shown at the Estonian Museum of Photography, reimagines the bog as a slow-thinking body, combining analogue photography, cast glass, wet-molded leather, photogrammetry, and Gaussian Splatting animation to reflect on care, resistance, and layered time. Her work has been exhibited at Tallinn Art Hall, the Estonian Museum of Applied Art and Design, and in international contexts.`
-              }] : [];
-
-
-    items.forEach(item => {
-      const titleText = typeof item === 'string' ? item : item.title;
-      const href = typeof item === 'string' ? '#' : item.file || '#';
-      const li = document.createElement('li');
-      const a = document.createElement('a');
-      a.href = href;
-if (type === 'about') {
-  const p = document.createElement('p');
-  p.style.whiteSpace = 'pre-wrap';
-  p.style.fontSize = '13px';
-  p.textContent = titleText;
-  li.appendChild(p);
-} else {
-  a.textContent = titleText;
-  a.innerHTML = titleText.replace(/\n/g, '<br>');
-  li.appendChild(a);
-}
-
-      li.appendChild(a);
-      list.appendChild(li);
-    });
-
-    content.innerHTML = '';
-    content.appendChild(list);
-    panel.style.transform = 'translateX(0)';
-  } else {
-    panel.style.transform = 'translateX(100%)';
-  }
-}
-
-
-  
-    // ASCII Tree Animation
-    window.addEventListener("DOMContentLoaded", () => {
-      const canvas = document.getElementById("asciiCanvas");
-      const ctx = canvas.getContext("2d");
-      let width, height;
-      let roots = [];
-      let mouseX = 0.5;
-      const maxRoots = 150;
-      const letters = "abcdefghijklmnopqrstuvwxyz".split("");
-  
-      function setup() {
-        width = window.innerWidth;
-        height = window.innerHeight;
-        canvas.width = width;
-        canvas.height = height;
-        roots = [];
-        for (let i = 0; i < 50; i++) {
-          roots.push(createBranch());
-        }
+Her recent solo exhibition SOO, shown at the Estonian Museum of Photography, reimagines the bog as a slow-thinking body, combining analogue photography, cast glass, wet-molded leather, photogrammetry, and Gaussian Splatting animation to reflect on care, resistance, and layered time. Her work has been exhibited at Tallinn Art Hall, the Estonian Museum of Applied Art and Design, and in international contexts.
+        </p>`;
+        panel.style.transform = 'translateX(0)';
+        return;
       }
-  
-      function createBranch(x = Math.random() * width, y = height + Math.random() * 100) {
-        return {
-          x,
-          y,
-          speed: 0.5 + Math.random(),
-          angle: Math.PI * 1.5 + (Math.random() - 0.5),
-          lifetime: 0,
-          opacity: 1,
-          faded: false,
-          path: [],
-          fadeCounter: 200
-        };
-      }
-  
-      function draw() {
-        ctx.fillStyle = "rgba(255, 255, 255, 0.06)";
-        ctx.fillRect(0, 0, width, height);
-        ctx.font = "12px monospace";
-  
-        for (let b of roots) {
-          const wind = (mouseX - 0.5) * 0.4;
-          b.angle += wind * 0.05;
-  
-          const dx = Math.cos(b.angle) * b.speed;
-          const dy = -Math.abs(Math.sin(b.angle)) * b.speed;
-          b.x += dx;
-          b.y += dy;
-          b.lifetime++;
-          b.path.push({ x: b.x, y: b.y });
-  
-          const fadeStart = height * 0.25;
-          if (b.y < fadeStart && !b.faded) b.faded = true;
-          if (b.faded) b.opacity -= 1 / b.fadeCounter;
-          if (b.opacity <= 0 || b.y < -20 || b.path.length > 700) {
-            Object.assign(b, createBranch());
-          }
-  
-          if (Math.random() < 0.25) {
-            ctx.fillStyle = `rgba(170, 170, 170, ${Math.max(0, b.opacity)})`;
-            const letter = letters[Math.floor(Math.random() * letters.length)];
-            ctx.fillText(letter, b.x, b.y);
-          }
-  
-          if (Math.random() < 0.01 && b.lifetime < 100 && roots.length < maxRoots) {
-            const newAngle = b.angle + (Math.random() - 0.5);
-            roots.push({ ...b, angle: newAngle, path: [...b.path] });
-          }
-        }
-      }
-  
-      setup();
-      setInterval(draw, 50);
-      window.addEventListener("resize", setup);
-      window.addEventListener("mousemove", e => {
-        mouseX = e.clientX / window.innerWidth;
+
+      items.forEach(item => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = item.file;
+        a.textContent = item.title;
+        a.target = "_blank";
+        li.appendChild(a);
+        list.appendChild(li);
       });
-      window.addEventListener("click", e => {
-        const rect = canvas.getBoundingClientRect();
-        roots.push(createBranch(e.clientX - rect.left, e.clientY - rect.top));
-      });
-    });
+
+      content.appendChild(list);
+      panel.style.transform = 'translateX(0)';
+    }
+
+  
+    function createHelix() {
+  const container = document.getElementById('helixContainer');
+  const radius = 260;
+  const height = 700;
+  const turns = 3;
+  const totalPoints = phrases.length;
+
+  container.innerHTML = '';
+
+      for (let i = 0; i < totalPoints; i++) {
+        const t = i / (totalPoints - 1);
+        const angle = t * turns * 2 * Math.PI;
+        const y = t * height;
+        const x = radius * Math.cos(angle);
+        const z = radius * Math.sin(angle);
+
+        const phrase = phrases[i];
+const baseAngle = angle;
+for (let j = 0; j < phrase.length; j++) {
+  const char = phrase[j];
+  const charAngle = baseAngle + (j - phrase.length / 2) * 0.05;
+  const charX = radius * Math.cos(charAngle);
+  const charZ = radius * Math.sin(charAngle);
+  const cameraOffset = 400;
+  const charY = y + cameraOffset;
+
+  const charDiv = document.createElement('div');
+  charDiv.className = 'text-element';
+  charDiv.textContent = char;
+  charDiv.style.transform = `translate3d(${charX}px, ${charY - height / 2}px, ${charZ}px) rotateY(${charAngle}rad)`;
+  container.appendChild(charDiv);
+}
+      }
+    }
+
+    createHelix();
+
   </script>
-  <script>
-  
-  const links = document.querySelectorAll('.interactive-link');
-  const maxDistance = 100; // px
-  const maxScale = 1.4;
-  const maxShift = 12; // px – kui palju võivad teised tekstiread nihkuda
+<script>
+document.addEventListener('mousemove', (e) => {
+  const container = document.getElementById('helixContainer');
+  const rect = container.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
 
-  document.addEventListener('mousemove', (e) => {
-    links.forEach(link => {
-      const rect = link.getBoundingClientRect();
-      const linkX = rect.left + rect.width / 2;
-      const linkY = rect.top + rect.height / 2;
+  const mouseX = (e.clientX - centerX) / (rect.width / 2);
+  const mouseY = (e.clientY - centerY) / (rect.height / 2);
 
-      const dx = e.clientX - linkX;
-      const dy = e.clientY - linkY;
-      const distance = Math.sqrt(dx * dx + dy * dy);
+  const rotateY = mouseX * 20;
+  const rotateX = -mouseY * 10;
 
-      if (distance < maxDistance) {
-        const scale = 1 + (1 - distance / maxDistance) * (maxScale - 1);
-        const shiftAmount = (1 - distance / maxDistance) * maxShift;
-
-        link.style.transform = `scale(${scale})`;
-        link.style.margin = `${shiftAmount}px ${shiftAmount * 0.7}px`;
-      } else {
-        link.style.transform = 'scale(1)';
-        link.style.margin = '0';
-      }
-    });
-  });
+  container.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+});
 </script>
 
-
-  
 </body>
 </html>
