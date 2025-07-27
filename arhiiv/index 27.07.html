@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script defer data-domain="alyonamovko.com" src="https://plausible.io/js/script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alyona Movko-Mägi | Artist of Craft, Memory & Mire</title>
+<meta name="description" content="Estonian artist Alyona Movko-Mägi works with craft, digital media, and ecological memory—creating installations that explore identity, land, and transformation.">
+<meta name="keywords" content="Alyona Movko-Mägi, Estonian artist, craft studies, bog installations, digital fashion, ecological memory, analogue photography, leather sculpture, posthuman art, material practice, heritage art, interactive installation">
+<meta property="og:title" content="Alyona Movko-Mägi | Artist of Craft, Memory & Mire">
+<meta property="og:description" content="Explore installations that blend leather, glass, and digital avatars—rooted in heritage, care, and environmental time.">
+<meta property="og:image" content="images/alyonabyannika.png"> 
+
+  <style>
+    body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('images/cover.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.5; 
+  z-index: -1;
+}
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #fcfcfc, #f3f3f3);
+      font-family: monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  margin: 0;
+  padding: 0;
+  height: 100dvh;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+    }
+    .helix-container {
+      position: relative;
+      width: 400px;
+      height: 100vh;
+      transform-style: preserve-3d;
+      animation: rotate 100s linear infinite;
+    }
+    .text-element {
+      position: absolute;
+      font-size: 12px;
+      color: #111;
+      transform-style: preserve-3d;
+      white-space: nowrap;
+    }
+    @keyframes rotate {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+    }.nav-links {
+      position: fixed;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      gap: 1.5rem;
+      font-size: 14px;
+    }
+    .nav-links a {
+      text-decoration: underline;
+      color: black;
+      cursor: pointer;
+    }
+.identity-block {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 13px;
+}
+    .name {
+      position: fixed;
+      top: 1rem;
+      left: 1.5rem;
+      z-index: 2;
+        text-decoration: none;
+      letter-spacing: 1px;
+    }
+.contact-block {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 13px;
+}
+
+.contact-block a {
+  color: black;
+  text-decoration: none;
+  margin-bottom: 4px;
+}
+
+
+    .footer {
+      position: fixed;
+      bottom: 1.5rem;
+      width: 100%;
+      text-align: center;
+      font-style: italic;
+      font-size: 10px;
+      letter-spacing: 1px;
+      z-index: 2;
+      padding: 1rem 0;
+      color: rgb(73, 91, 125);
+    }
+#infoPanel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 320px;
+  height: 100dvh; /* more reliable on mobile than 100vh */
+  overflow-y: auto;
+  background: white;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  padding: 1rem;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+   z-index: 9999; 
+}
+
+    #infoPanel h2 {
+      font-size: 16px;
+      margin-top: 0;
+    }
+    #infoPanel ul {
+      list-style: none;
+      padding: 0;
+    }
+    #infoPanel li {
+      margin-bottom: 1.2rem;
+    }
+    #infoPanel a {
+      text-decoration: none;
+      color: black;
+      font-size: 13px;
+    }
+    #closePanel {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  a:visited {
+  color: black;
+}
+@media (max-width: 600px) {
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    gap: 0.5rem;
+    top: 5.5rem;
+  }
+
+  .identity-block {
+    top: 1rem;
+    left: 1rem;
+    font-size: 12px;
+  }
+
+  .contact-block {
+    top: 1rem;
+    right: 1rem;
+    font-size: 12px;
+    align-items: flex-end;
+  }
+}
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  backdrop-filter: blur(0px);
+  transition: opacity 1s ease, backdrop-filter 1s ease; 
+  z-index: 999; /* All paneelist */
+  pointer-events: none;
+}
+
+#overlay.active {
+  opacity: 0.9;
+  backdrop-filter: blur(8px);
+}
+.overlay-caption {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 11px;
+  color: white;
+  background: rgba(0, 0, 0, 0.4); 
+  padding: 4px 8px;
+  border-radius: 3px;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+#overlay.active .overlay-caption {
+  opacity: 1; 
+}
+
+
+  </style>
+</head>
+<body>
+<div class="identity-block">
+  <a href="/" class="name">Alyona Movko-Mägi</a>
+</div>
+<div id="overlay">
+<div class="overlay-caption">Photo by Kalev Lilleorg</div>
+</div>
+  <div class="nav-links">
+    <a onclick="toggleInfo('about')">about</a>
+    <a href="cv.pdf" target="_blank" rel="noopener noreferrer">cv</a>
+    <a onclick="toggleInfo('works')">works</a>
+    <a onclick="toggleInfo('exhibitions')">exhibitions</a>
+    <a onclick="toggleInfo('texts')">texts</a>
+    <a onclick="toggleInfo('press')">press</a>
+  </div>
+  <canvas id="spiralCanvas"></canvas>
+  <div class="footer">How do we root ourselves in uncertain ground?</div>
+
+  <div id="infoPanel">
+    <div id="closePanel" onclick="toggleInfo(false)">✕</div>
+    <h2 id="infoTitle"></h2>
+    <div id="infoContent"></div>
+  </div>
+  <div class="helix-container" id="helixContainer"></div>
+ 
+<h1 style="position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;">
+  Alyona Movko-Mägi – Estonian Artist Working with Craft, Memory, and Mire
+</h1>
+<h2 style="text-align: center; font-size: 12px; font-weight: normal; letter-spacing: 1px; margin-bottom: 2rem;">
+  Artist working with land, memory and digital materiality
+</h2>
+  <div class="contact-block">
+  <a href="mailto:contact@alyonamovko.com">contact@alyonamovko.com</a>
+  <a href="https://www.instagram.com/alyona.movko.maegi/" target="_blank">@alyona</a>
+</div>
+  <script>
+    
+    const phrases = [
+      "Material memory",
+      "Transformation and decay",
+      "Loss and presence",
+      "Care ethics",
+      "Embodied presence",
+      "Heritage and tradition",
+      "Environmental mythologies",
+      "Fragmented memory",
+      "Temporal layering",
+      "Anthropological and archaeological",
+      "Field-based research",
+      "Material experimentation",
+      "Photographic documentation and intervention",
+      "Digital reconstruction from archival images",
+      "Volumetric rendering and speculative forms",
+      "Dialogues between organic and industrial materials",
+      "Installation as spatial narrative",
+      "Collaboration with place and materials",
+      "Preservation and disappearance",
+      "Digital fossilization",
+      "Alchemy and archives",
+      "Land-based knowledge"
+    ];
+const works = [
+  { title: "RÜÜ", file: "ryy.html" },
+  { title: "Sky Maiden", file: "sky_maiden.html" },
+  { title: "Networked Myths: Weaving Identity Through the Threads of the Digital Age", file: "tase.html" },
+  { title: "SEEN: it’s bitter so bitter, that it becomes sweet", file: "seen.html" },
+  { title: "Sutures.duo", file: "suturesduo.html" },
+  { title: "Sutures.duo", file: "sutures.html" },
+  { title: "Biopoetics", file: "biopoetics.html" },
+  { title: "Charter X", file: "charter.html" }
+  ];
+
+  const exhibitions = [
+  { title: "Creature. Maker. Mire.", file: "mire.html" }, 
+  { title: "Selected Interventions", file: "edtm.html" },
+  { title: "Networked Myths: Weaving Identity Through the Threads of the Digital Age", file: "tase.html" },
+  { title: "Objects or Things", file: "eseasi.html" },
+    "Live, Love, Stuff!"
+  
+  ];
+  const  texts = [
+  { title: "Creature. Maker. Mire.", file: "texts/mire.pdf" },
+  { title: "From Disappearance to Reimagination: Crafting Heritage in a Vanishing World", file: "texts/SkyMaiden.pdf" },
+  { title: "SEEN: it’s bitter so bitter, that it becomes sweet", file: "texts/seen.pdf" },
+  ];
+
+
+  const press = [
+  { 
+    title: "Tõukejõud: Alyona Movko-Mägi", 
+    publication: "Müürileht — March 2023", 
+    link: "https://www.muurileht.ee/toukejoud-alyona-movko-magi/" 
+  }
+ 
+];
+
+    function toggleInfo(type) {
+      const panel = document.getElementById("infoPanel");
+      const overlay = document.getElementById("overlay");
+      const title = document.getElementById("infoTitle");
+      const content = document.getElementById("infoContent");
+
+      if (!type) {
+        panel.style.transform = 'translateX(100%)';
+        overlay.classList.remove('active');
+        overlay.style.backgroundImage = '';
+        return;
+      }
+
+      title.textContent = type.toUpperCase();
+      content.innerHTML = '';
+
+      const list = document.createElement('ul');
+      let items = [];
+
+      if (type === 'works') items = works;
+      else if (type === 'exhibitions') items = exhibitions;
+      else if (type === 'texts') items = texts;
+       else if (type === 'press') items = press;
+else if (type === 'about') {
+  overlay.style.backgroundImage = 'url(images/about-bg.png)';
+  overlay.classList.add('active');
+
+  content.innerHTML = `<p style="font-size: 13px; white-space: pre-wrap">
+Alyona Movko-Mägi (b. 1984, Tallinn, Estonia) is an interdisciplinary artist working at the intersection of expanded photography, material practice, and ecological memory. Her work explores how identity, landscape, and ancestral knowledge are embedded in both organic and digital forms.
+
+Drawing on analog and AI-based photography, glass, leather, textile, projection, and interaction design, she builds multisensory environments that reflect on care, disappearance, and transformation. Movko-Mägi’s recent practice examines post-human embodiment, environmental trace, and the persistence of cultural memory through site-specific, time-based works.
+
+Movko-Mägi holds two MA degrees from the Estonian Academy of Arts — in Contemporary Art and Craft Studies — and teaches in the fields of digital fashion and experimental image-making.
+
+Her recent solo exhibition SOO, shown at the Estonian Museum of Photography, reimagines the bog as a slow-thinking body, combining analogue photography, cast glass, wet-molded leather, photogrammetry, and Gaussian Splatting animation to reflect on care, resistance, and layered time. Her work has been exhibited at Tallinn Art Hall, the Estonian Museum of Applied Art and Design, and in international contexts.
+  </p>`;
+
+  panel.style.transform = 'translateX(0)';
+  return;
+}
+
+
+items.forEach(item => {
+  const li = document.createElement('li');
+
+  if (type === 'press') {
+    const titleDiv = document.createElement('div');
+    titleDiv.style.fontSize = "13px";
+    titleDiv.style.fontWeight = "bold";
+    titleDiv.textContent = item.title;
+
+    const pub = document.createElement('div');
+    pub.style.fontSize = "11px";
+    pub.style.marginBottom = "5px";
+    pub.textContent = item.publication;
+
+    const a = document.createElement('a');
+    a.href = item.link;
+    a.textContent = "Read the article →";
+    a.target = "_blank";
+
+    li.appendChild(titleDiv);
+    li.appendChild(pub);
+    li.appendChild(a);
+  } else {
+    const a = document.createElement('a');
+    a.href = item.file;
+    a.textContent = item.title;
+    a.target = "_blank";
+    li.appendChild(a);
+  }
+
+  list.appendChild(li);
+});
+
+content.appendChild(list);
+panel.style.transform = 'translateX(0)';
+
+
+  
+    function createHelix() {
+  const container = document.getElementById('helixContainer');
+  const radius = 260;
+  const height = 700;
+  const turns = 3;
+  const totalPoints = phrases.length;
+
+  container.innerHTML = '';
+
+      for (let i = 0; i < totalPoints; i++) {
+        const t = i / (totalPoints - 1);
+        const angle = t * turns * 2 * Math.PI;
+        const y = t * height;
+        const x = radius * Math.cos(angle);
+        const z = radius * Math.sin(angle);
+
+        const phrase = phrases[i];
+const baseAngle = angle;
+for (let j = 0; j < phrase.length; j++) {
+  const char = phrase[j];
+  const charAngle = baseAngle + (j - phrase.length / 2) * 0.05;
+  const charX = radius * Math.cos(charAngle);
+  const charZ = radius * Math.sin(charAngle);
+  const cameraOffset = 400;
+  const charY = y + cameraOffset;
+
+  const charDiv = document.createElement('div');
+  charDiv.className = 'text-element';
+  charDiv.textContent = char;
+  charDiv.style.transform = `translate3d(${charX}px, ${charY - height / 2}px, ${charZ}px) rotateY(${charAngle}rad)`;
+  container.appendChild(charDiv);
+}
+      }
+    }
+
+    createHelix();
+
+  </script>
+<script>
+document.addEventListener('mousemove', (e) => {
+  const container = document.getElementById('helixContainer');
+  const rect = container.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+
+  const mouseX = (e.clientX - centerX) / (rect.width / 2);
+  const mouseY = (e.clientY - centerY) / (rect.height / 2);
+
+  const rotateY = mouseX * 20;
+  const rotateX = -mouseY * 10;
+
+  container.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+});
+</script>
+
+</body>
+</html>
