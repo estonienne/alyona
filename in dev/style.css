@@ -1,0 +1,132 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Canela', serif;
+  background-color: #f9f8f6;
+  color: #1c1c1c;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  background: url('your-hero-image.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.overlay {
+  background: rgba(249, 248, 246, 0.8);
+  padding: 2rem;
+}
+
+.hero-text {
+  font-size: 2rem;
+  font-weight: 300;
+  max-width: 700px;
+  text-align: center;
+  opacity: 0;
+  animation: fadeIn 3s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Works Section */
+.works {
+  padding: 6rem 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+
+.works-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.work-item {
+  text-decoration: none;
+  color: #1c1c1c;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #dcdcdc;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.work-item:hover {
+  color: #5b5b5b;
+}
+
+.work-title {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.work-sub {
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #7a7a7a;
+}
+
+/* About */
+.about {
+  padding: 4rem 2rem;
+  max-width: 700px;
+  margin: auto;
+  font-size: 1.1rem;
+  font-weight: 300;
+  opacity: 0.9;
+}
+.hero {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  background: rgba(249, 248, 246, 0.6); /* subtle veil */
+  padding: 2rem;
+  text-align: center;
+  max-width: 80%;
+}
+
+.hero-text {
+  font-size: 2rem;
+  font-weight: 300;
+  color: #1c1c1c;
+  opacity: 0;
+  animation: fadeIn 3s ease forwards;
+}
+
+.credit {
+  font-size: 0.8rem;
+  color: #444;
+  margin-top: 1rem;
+  opacity: 0.8;
+  font-family: 'Canela', serif;
+}
