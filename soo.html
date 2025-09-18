@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SOO – Alyona Movko-Mägi</title>
+  <style>
+    body {
+      --bg-color: #fff;
+      --text-color: #111;
+      font-family: monospace;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 2rem;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 1rem;
+    }
+    .meta {
+      font-size: 14px;
+      margin-bottom: 1rem;
+    }
+    .materials {
+      font-style: italic;
+    }
+    .location {
+      font-size: 12px;
+      text-align: right;
+      margin-bottom: 1.5rem;
+    }
+    .description {
+      margin: 2rem 0;
+      white-space: pre-wrap;
+      line-height: 1.6;
+    }
+    .gallery img {
+  display: block;
+  margin: 20px auto;
+  opacity: 0;
+  transition: opacity 1s ease;
+      width: 100%;
+      max-width: 700px;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: opacity 0.5s ease;
+    }
+    .caption {
+      font-size: 12px;
+      opacity: 0.6;
+      margin-top: 0.4rem;
+    }
+    .fullscreen-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .fullscreen-overlay img {
+      max-width: 90vw;
+      max-height: 80vh;
+    }
+    .fullscreen-caption {
+      color: white;
+      font-size: 7px;
+      margin-top: 1rem;
+      max-width: 90vw;
+      text-align: center;
+    }
+    .fullscreen-controls {
+      position: absolute;
+      bottom: 20px;
+      display: flex;
+      gap: 20px;
+    }
+    .fullscreen-btn {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-family: monospace;
+      transition: background 0.3s;
+    }
+    .fullscreen-btn:hover {
+      background: rgba(255,255,255,0.3);
+    }
+  
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+    main {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .nav-links {
+      margin-top: 4rem;
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+    }
+    main {
+      animation: fadeIn 1.2s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .controls {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      gap: 10px;
+      z-index: 1001;
+    }
+    
+    .dark-toggle, .shuffle-btn {
+      font-family: monospace;
+      background: none;
+      border: 1px solid currentColor;
+      padding: 4px 10px;
+      font-size: 13px;
+      color: inherit;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+    
+    body.dark {
+      --bg-color: #111;
+      --text-color: #eee;
+    }
+  </style>
+</head>
+<body>
+<div class="controls">
+  <button class="dark-toggle" onclick="toggleDark()">dark / light</button>
+</div>
+<canvas id="asciiCanvas"></canvas>
+  <main id="content">
+    <h1>SOO</h1>
+    <div class="meta">2025 <span class="materials">Leather, glass, bone, wood, light, photography, parchment, rust, photopolymer resin, carbon fiber–reinforced PLA.</span></div>
+    <div class="location">Museum of Photography, Seek gallery</div>
+    <div class="description">
+<b>SOO / Mire is a place where every step leaves a trace. And the ground, in return, leaves a trace in you.</b> 
+
+Alyona Movko-Mägi's exhibition Soo examines the bog as both landscape and methodology — a thinking entity that absorbs, preserves, and transforms. Living beside the wetlands of Lahemaa, the artist has developed a practice that follows the bog's own logic: layered, patient, resistant to simple interpretation.
+
+The exhibition brings together sculptural objects, photographic processes, interactive environments, and digital translations that reflect on how matter records presence and absence. Working across organic and synthetic materials — vegetable-tanned leather, bone, glass, analog photography, AI-generated forms, and digitally fabricated structures — each work begins from lived engagement with specific places: leather forms shaped around forest roots that remember pressure without carrying bodies, textile sculptures slowly reclaimed by moss and weather, bones found on forest floors and marked with silver leaf.
+
+Central to the practice is an investigation of care — what it means to attend to a place, its histories, its ongoing transformations. Some works unfold through slow material processes: boiling leather until it holds the memory of touch, casting glass that sags under heat, contact printing where light passes directly through materials onto photosensitive paper. Others emerge through touchless technologies: volumetric scanning that reconstructs forest fragments as breathing digital terrain, machine learning systems that translate human presence into bog-like textures and sediment patterns.
+
+Photography forms the conceptual backbone of the entire exhibition, functioning less as documentation and more as a method for seeing and transforming visual material into new forms. The photographic process — capturing, developing, materializing light — becomes the underlying logic that drives all the works. Light leaves traces in silver emulsion just as bodies leave traces in peat, and this principle of impression and memory extends across every medium. Works like Family Portrait bring machine-generated hybrid figures into physical reality through screen exposure — digital creatures becoming bodies of light on silver gelatin paper. The Retrospective Body reconstructs an ancient bog body from a single archival photograph, creating both 3D-printed fragments and subtle animations where the still image “breathes”. Even the interactive digital works follow photographic thinking: scanning, exposing, developing visual information into material forms.
+
+The architectural context of Jaani Seek — a former medieval almshouse — adds another temporal layer. Once a space of shelter and waiting, it now holds new bodies, new silences. In Beneath, viewers rest on floors that have supported bodies for nearly eight centuries — the almshouse was first mentioned in 1237 — while body-tracking systems translate their presence into shifting forms that echo what might be found on the bog floor, asking how the landscape might read us back. Still Breathing Ground transforms the ceiling into an interactive terrain built from scanned forest remains, responding to gesture with atmospheric movement.
+
+The exhibition includes a multichannel soundscape by composer Maksim Adel (Adel Force), created as an immersive sonic meditation that attunes visitors to slowness and deep listening. Drawing from bog field recordings, original compositions, and archival materials, the sound environment moves like sediment layers — comforting, enveloping, and designed to shift perception toward the bog's own temporal rhythm. Sound and image accumulate together, creating an atmosphere where memory gathers through texture, pressure, and time.
+
+Soo operates at the threshold between preservation and disappearance, stillness and transformation, technology and touch — following the slow intelligence of a place that listens, edits, and remembers.
+
+<b>Curator: </b>Annika Haas
+<b>Sound design:</b> Maksim Adel
+<b>Lighting design:</b> Mikk-Mait Kivi
+<b>Graphic design:</b> Katariin Mudist
+<b>Installation team: </b>Mikk Kivila, Marten Esko, Valge Kuup
+<b>Supported by:</b>EKA Glass and Photography Departments
+<b>Presented as part of the Estonian Academy of Arts graduation festival TASE ’25</b>
+
+
+<div class="gallery" id="imageGallery">
+
+  <script>
+    const gallery = document.getElementById('imageGallery');
+    const fullscreenImages = [];
+    for (let i = 1; i <= 26; i++) {
+      const imgSrc = `images/soo/soo${i}.jpg`;
+      const caption = (i === 26) ? 'Photos: Annika Haas' : '';
+      const container = document.createElement('div');
+      const img = document.createElement('img');
+      const cap = document.createElement('div');
+
+      img.src = imgSrc;
+      img.onclick = () => showFullscreen(i - 1);
+      cap.className = 'caption';
+      cap.textContent = caption;
+
+      container.appendChild(img);
+      container.appendChild(cap);
+      gallery.appendChild(container);
+
+      fullscreenImages.push({ src: imgSrc, caption });
+    }
+  </script>
+</div>
+
+    
+</main>
+
+  <script>
+    let currentIndex = 0;
+
+function showFullscreen(index) {
+  currentIndex = index;
+  const image = fullscreenImages[currentIndex];
+  const overlay = document.createElement("div");
+  overlay.className = "fullscreen-overlay";
+  overlay.tabIndex = 0;
+
+  overlay.innerHTML = `
+    <img src="${image.src}" alt="">
+    <div class="fullscreen-caption">${image.caption}</div>
+  `;
+
+  overlay.addEventListener("click", () => overlay.remove());
+
+  overlay.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") navigateFullscreen(1);
+    else if (e.key === "ArrowLeft") navigateFullscreen(-1);
+    else if (e.key === "Escape") overlay.remove();
+  });
+
+  document.body.appendChild(overlay);
+  overlay.focus();
+}
+
+function navigateFullscreen(direction) {
+  currentIndex = (currentIndex + direction + fullscreenImages.length) % fullscreenImages.length;
+  const overlay = document.querySelector('.fullscreen-overlay');
+  const img = overlay.querySelector("img");
+  const cap = overlay.querySelector(".fullscreen-caption");
+
+  img.src = fullscreenImages[currentIndex].src;
+  cap.textContent = fullscreenImages[currentIndex].caption;
+}
+
+      
+      // Create the content with controls
+      overlay.innerHTML = `
+        <img src="${image.src}" alt="">
+        <div class="fullscreen-caption">${image.caption}</div>
+        
+      `;
+      
+      // Set up button events
+      
+      
+      
+      
+      // Close on overlay click
+      overlay.addEventListener("click", () => overlay.remove());
+      
+      // Add keyboard navigation
+      overlay.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") {
+          navigateFullscreen(1);
+        } else if (e.key === "ArrowLeft") {
+          navigateFullscreen(-1);
+        } else if (e.key === "Escape") {
+          overlay.remove();
+        }
+      });
+      
+      document.body.appendChild(overlay);
+      overlay.focus();
+    
+    
+    function navigateFullscreen(direction) {
+      currentIndex = (currentIndex + direction + fullscreenImages.length) % fullscreenImages.length;
+      const overlay = document.querySelector('.fullscreen-overlay');
+      const img = overlay.querySelector("img");
+      const cap = overlay.querySelector(".fullscreen-caption");
+      
+      img.src = fullscreenImages[currentIndex].src;
+      cap.innerHTML = fullscreenImages[currentIndex].caption;
+    }
+  
+    function toggleDark() {
+      document.body.classList.toggle('dark');
+    }
+  </script>
+
+<script>
+const canvas = document.getElementById("asciiCanvas");
+const ctx = canvas.getContext("2d");
+let width, height, mouseX = 0.5;
+const roots = [], letters = "abcdefghijklmnopqrstuvwxyz".split("");
+const maxRoots = 150;
+
+function setupCanvas() {
+  width = window.innerWidth;
+  height = window.innerHeight;
+  canvas.width = width;
+  canvas.height = height;
+  roots.length = 0;
+  for (let i = 0; i < 50; i++) roots.push(createBranch());
+}
+
+function createBranch(x = Math.random() * width, y = height + Math.random() * 100) {
+  return {
+    x, y,
+    speed: 0.5 + Math.random(),
+    angle: Math.PI * 1.5 + (Math.random() - 0.5),
+    lifetime: 0,
+    opacity: 1,
+    faded: false,
+    fadeCounter: 200,
+    path: []
+  };
+}
+
+function drawCanvas() {
+  // Draw a semi-transparent rect to create trailing effect
+  if (document.body.classList.contains('dark')) {
+    ctx.fillStyle = "rgba(17,17,17,0.06)";
+  } else {
+    ctx.fillStyle = "rgba(255,255,255,0.06)";
+  }
+  ctx.fillRect(0, 0, width, height);
+  ctx.font = "12px monospace";
+
+  for (let b of roots) {
+    const wind = (mouseX - 0.5) * 0.4;
+    b.angle += wind * 0.05;
+    b.x += Math.cos(b.angle) * b.speed;
+    b.y += -Math.abs(Math.sin(b.angle)) * b.speed;
+    b.lifetime++;
+    b.path.push({ x: b.x, y: b.y });
+
+    if (b.y < height * 0.25 && !b.faded) b.faded = true;
+    if (b.faded) b.opacity -= 1 / b.fadeCounter;
+    if (b.opacity <= 0 || b.y < -20 || b.path.length > 700) Object.assign(b, createBranch());
+
+    if (Math.random() < 0.25) {
+      // Adjust color based on dark mode
+      if (document.body.classList.contains('dark')) {
+        ctx.fillStyle = `rgba(220,220,220,${Math.max(0, b.opacity)})`;
+      } else {
+        ctx.fillStyle = `rgba(120,120,120,${Math.max(0, b.opacity)})`;
+      }
+      ctx.fillText(letters[Math.floor(Math.random() * letters.length)], b.x, b.y);
+    }
+
+    if (Math.random() < 0.01 && b.lifetime < 100 && roots.length < maxRoots) {
+      const newAngle = b.angle + (Math.random() - 0.5);
+      roots.push({ ...b, angle: newAngle, path: [...b.path] });
+    }
+  }
+}
+
+setupCanvas();
+setInterval(drawCanvas, 50);
+window.addEventListener("resize", setupCanvas);
+window.addEventListener("mousemove", e => { mouseX = e.clientX / window.innerWidth });
+window.addEventListener("click", e => {
+  const rect = canvas.getBoundingClientRect();
+  roots.push(createBranch(e.clientX - rect.left, e.clientY - rect.top));
+});
+</script>
+
+
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".gallery img").forEach(img => {
+    img.addEventListener("load", () => {
+      img.style.opacity = "1";
+    });
+    if (img.complete) {
+      img.style.opacity = "1";
+    }
+  });
+});
+</script>
+
+</body>
+</html>
